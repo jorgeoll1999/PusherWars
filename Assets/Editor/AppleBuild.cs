@@ -26,6 +26,14 @@ public static class AppleBuild
     public static void ExportIos()
     {
         Configure();
+        var icon = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Characters/UI/AppIcon.png");
+        if (!icon) throw new InvalidOperationException("Missing app icon.");
+        foreach (var kind in PlayerSettings.GetSupportedIconKinds(NamedBuildTarget.iOS))
+        {
+            var icons = PlayerSettings.GetPlatformIcons(NamedBuildTarget.iOS, kind);
+            foreach (var slot in icons) slot.SetTexture(icon);
+            PlayerSettings.SetPlatformIcons(NamedBuildTarget.iOS, kind, icons);
+        }
         PlayerSettings.SetApplicationIdentifier(NamedBuildTarget.iOS, "com.guerradeempujes.playtest");
         PlayerSettings.SetScriptingBackend(NamedBuildTarget.iOS, ScriptingImplementation.IL2CPP);
         PlayerSettings.iOS.targetOSVersionString = "16.0";

@@ -10,4 +10,8 @@ case "${1:-}" in
 esac
 cd "$project"
 mkdir -p Logs
-exec "$editor" -batchmode -nographics -quit -projectPath "$project" -buildTarget "$target" -executeMethod "$method" -logFile "$project/Logs/Build-$1.log"
+"$editor" -batchmode -nographics -quit -projectPath "$project" -buildTarget "$target" -executeMethod "$method" -logFile "$project/Logs/Build-$1.log"
+
+if [ "$1" = "ios" ]; then
+    python3 Tools/Apple/PrepareXcode.py
+fi
