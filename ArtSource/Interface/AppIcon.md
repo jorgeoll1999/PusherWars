@@ -1,0 +1,4 @@
+App icon generated with the built-in image_gen tool. Final source: Assets/Characters/UI/AppIcon.png. Unity exports the required opaque 1024×1024 marketing icon and device sizes.
+
+Prompt:
+Create a final square 1024 by 1024 pixel mobile game app icon for an original fantasy wizard arena game 'Guerra de empujes'. No text or letters. A striking hooded violet battlemage portrait, gold-edged hood, bright cyan magical gaze, holding a blazing amber fire orb against a deep midnight blue background with a few lava embers. Polished painterly stylized 3D fantasy game illustration, strong simple silhouette and readable face at small app icon size, premium rich lighting and clean centered composition. Full square edge-to-edge image, opaque background, no rounded corners, no frame, no logos or watermarks. Keep face and orb safely inside middle 80 percent.

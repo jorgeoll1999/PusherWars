@@ -38,7 +38,7 @@ public static class AppleBuild
         PlayerSettings.SetScriptingBackend(NamedBuildTarget.iOS, ScriptingImplementation.IL2CPP);
         PlayerSettings.iOS.targetOSVersionString = "16.0";
         PlayerSettings.iOS.sdkVersion = iOSSdkVersion.DeviceSDK;
-        PlayerSettings.iOS.buildNumber = "18";
+        PlayerSettings.iOS.buildNumber = "19";
         PlayerSettings.iOS.appleEnableAutomaticSigning = true;
         string team = Environment.GetEnvironmentVariable("GUERRA_APPLE_TEAM_ID");
         if (!string.IsNullOrEmpty(team)) PlayerSettings.iOS.appleDeveloperTeamID = team;
