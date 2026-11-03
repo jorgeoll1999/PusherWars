@@ -22,7 +22,7 @@ namespace GuerraDeEmpujes
 
  [Serializable] public class OnlinePeer {public int id,hero;public bool ready,connected=true;}
 
- [Serializable] public class OnlineActor {public Vector3 position;public float yaw,hp,speed;public int wins,kills,earned;public bool bubble,teleporting;public HeroProgression progress;public float[] cooldown;}
+ [Serializable] public class OnlineActor {public Vector3 position;public float yaw,hp,speed;public int wins,kills,earned;public bool bubble,teleporting,ramming;public float ward;public int coverKind,coverLife;public Vector3 coverAt;public HeroProgression progress;public float[] cooldown;}
 
  [Serializable] public class OnlineShot {public int id,kind;public Vector3 position;public Quaternion rotation;}
 
@@ -202,7 +202,7 @@ namespace GuerraDeEmpujes
 
   {
 
-   var actors=new OnlineActor[game.Fighters.Count];for(int i=0;i<actors.Length;i++){var p=game.Fighters[i];var b=p.GetComponent<BubbleShield>();var load=p.GetComponent<SpellLoadout>();var cds=new float[4];for(int k=0;k<4;k++)cds[k]=Mathf.Max(0,load.slots[k].readyAt-Time.time);actors[i]=new OnlineActor{position=p.transform.position,yaw=p.transform.eulerAngles.y,hp=p.GetComponent<ArenaHealth>().CurrentHealth,speed=p.GetComponent<Rigidbody>().linearVelocity.magnitude,bubble=b&&b.Active,teleporting=load.IsTeleporting,progress=game.OnlineProgress[i],wins=game.OnlineWins(i),kills=game.OnlineKills(i),earned=game.OnlineEarned(i),cooldown=cds};}
+   var actors=new OnlineActor[game.Fighters.Count];for(int i=0;i<actors.Length;i++){var p=game.Fighters[i];var b=p.GetComponent<BubbleShield>();var load=p.GetComponent<SpellLoadout>();var hero=p.GetComponent<HeroBattleStats>();var cover=hero.summoned?hero.summoned.GetComponent<ArenaCover>():null;var cds=new float[load.slots.Length];for(int k=0;k<cds.Length;k++)cds[k]=Mathf.Max(0,load.slots[k].readyAt-Time.time);actors[i]=new OnlineActor{position=p.transform.position,yaw=p.transform.eulerAngles.y,hp=p.GetComponent<ArenaHealth>().CurrentHealth,speed=p.GetComponent<Rigidbody>().linearVelocity.magnitude,bubble=b&&b.Active,teleporting=load.IsTeleporting,ramming=p.GetComponent<ArenaCharacterMotor>().Ramming,ward=p.GetComponent<ArenaHealth>().WardRemaining,coverKind=hero.summonType,coverLife=cover?cover.hits:0,coverAt=cover?cover.transform.position:Vector3.zero,progress=game.OnlineProgress[i],wins=game.OnlineWins(i),kills=game.OnlineKills(i),earned=game.OnlineEarned(i),cooldown=cds};}
 
    var shots=new List<OnlineShot>();var dead=new List<int>();foreach(var pair in projectiles){if(!pair.Value){dead.Add(pair.Key);continue;}shots.Add(new OnlineShot{id=pair.Key,kind=(int)pair.Value.Kind,position=pair.Value.transform.position,rotation=pair.Value.transform.rotation});}foreach(int id in dead)projectiles.Remove(id);
 
@@ -216,9 +216,12 @@ namespace GuerraDeEmpujes
 
    if(m.actors==null||m.actors.Length!=Peers.Length||m.actors.Length<2||m.actors.Length>ShrinkingArena.MaxPlayers)return;lastSnapshot=Time.unscaledTime;
 
+   foreach(var actor in m.actors)if(actor?.progress?.spells?.Length!=Arsenal.Powers||actor.progress.items?.Length!=Arsenal.Items||actor.cooldown?.Length!=Arsenal.Powers){Disconnect(true);Status="Instalen la misma versión del Arsenal para jugar juntos.";Notify();return;}
    if(receivedGeneration!=m.generation){receivedGeneration=m.generation;RoundReady=false;ClearReplicas();game.OnlineSpawn(Peers,LocalId);positions=new Vector3[m.actors.Length];yaws=new float[m.actors.Length];for(int i=0;i<positions.Length;i++){positions[i]=m.actors[i].position;game.Fighters[i].transform.position=positions[i];}}
 
-   game.OnlineState(m);game.World.Apply(m.coverHits);if(m.arenaRadius>0)game.Arena.SetRadius(m.arenaRadius);for(int i=0;i<m.actors.Length;i++){var a=m.actors[i];var p=game.Fighters[i];positions[i]=a.position;yaws[i]=a.yaw;p.GetComponent<ArenaHealth>().ApplyNetworkHealth(a.hp);p.GetComponent<CharacterAnimationDriver>().SetSpeed(a.speed);var load=p.GetComponent<SpellLoadout>();load.ReplicaTeleporting=a.teleporting;for(int k=0;k<4;k++){load.slots[k].level=a.progress.spells[k];load.slots[k].readyAt=Time.time+a.cooldown[k];}p.GetComponent<HeroBattleStats>().progression=a.progress;p.GetComponent<ArenaCharacterMotor>().moveSpeed=HeroBattleStats.MoveSpeed(a.progress.items[0]);if(a.bubble&&!bubbles.ContainsKey(i)){var visual=SpellVfx.Sphere("Network protective bubble",p.transform,Vector3.up*.9f,2.1f,SpellVfx.BubbleMaterial);SpellVfx.Ring(visual.transform,SpellVfx.Ice,.5f,.035f,Quaternion.identity);bubbles[i]=visual;}if(!a.bubble&&bubbles.ContainsKey(i)){Destroy(bubbles[i]);bubbles.Remove(i);}}
+   game.OnlineState(m);game.World.Apply(m.coverHits);if(m.arenaRadius>0)game.Arena.SetRadius(m.arenaRadius);for(int i=0;i<m.actors.Length;i++){var a=m.actors[i];var p=game.Fighters[i];positions[i]=a.position;yaws[i]=a.yaw;p.GetComponent<ArenaHealth>().ApplyNetworkHealth(a.hp);p.GetComponent<CharacterAnimationDriver>().SetSpeed(a.speed);var load=p.GetComponent<SpellLoadout>();load.ReplicaTeleporting=a.teleporting;var h=p.GetComponent<HeroBattleStats>();h.ReplicaRamming=a.ramming;p.GetComponent<ArenaHealth>().Protect(a.ward);
+    if(a.coverLife>0){if(!h.summoned||h.summonType!=a.coverKind||h.summoned.transform.position!=a.coverAt){if(h.summoned)Destroy(h.summoned);h.summonType=a.coverKind;h.summoned=SummonedCover.Create(game,a.coverAt,a.coverKind);}h.summoned.GetComponent<ArenaCover>().Apply(a.coverLife);}else if(h.summoned){Destroy(h.summoned);h.summoned=null;}
+    for(int k=0;k<load.slots.Length;k++){load.slots[k].level=a.progress.spells[k];load.slots[k].readyAt=Time.time+a.cooldown[k];}p.GetComponent<HeroBattleStats>().progression=a.progress;p.GetComponent<ArenaCharacterMotor>().moveSpeed=HeroBattleStats.MoveSpeed(a.progress.items[0]);if(a.bubble&&!bubbles.ContainsKey(i)){var visual=SpellVfx.Sphere("Network protective bubble",p.transform,Vector3.up*.9f,2.1f,SpellVfx.BubbleMaterial);SpellVfx.Ring(visual.transform,SpellVfx.Ice,.5f,.035f,Quaternion.identity);bubbles[i]=visual;}if(!a.bubble&&bubbles.ContainsKey(i)){Destroy(bubbles[i]);bubbles.Remove(i);}}
 
    var seen=new HashSet<int>();foreach(var shot in m.shots??new OnlineShot[0]){seen.Add(shot.id);GameObject visual;if(!replicas.TryGetValue(shot.id,out visual)){visual=new GameObject("Network projectile");visual.transform.SetPositionAndRotation(shot.position,shot.rotation);visual.AddComponent<ProjectileVfx>().Setup((SpellKind)shot.kind);replicas[shot.id]=visual;}visual.transform.SetPositionAndRotation(shot.position,shot.rotation);}var removed=new List<int>();foreach(var pair in replicas)if(!seen.Contains(pair.Key)){Destroy(pair.Value);removed.Add(pair.Key);}foreach(int id in removed)replicas.Remove(id);
 
@@ -232,7 +235,7 @@ namespace GuerraDeEmpujes
 
    if(m.generation!=receivedGeneration)return;
 
-   switch(m.name){case "cast":if(ValidActor(m.index)&&m.kind>=0&&m.kind<4){var driver=game.Fighters[m.index].GetComponent<CharacterAnimationDriver>();driver.SetAim(m.position);driver.TryCast(game.Fighters[m.index].GetComponent<SpellLoadout>().slots[m.kind].spell.kind,()=>{},m.value);}break;
+   switch(m.name){case "cast":if(ValidActor(m.index)&&m.kind>=0&&m.kind<Arsenal.Powers){var driver=game.Fighters[m.index].GetComponent<CharacterAnimationDriver>();driver.SetAim(m.position);driver.TryCast(Arsenal.Animation((SpellKind)m.kind),()=>{},m.value);}break;
 
     case "burst":SpellVfx.Burst(m.position,m.color,m.value);break;case "portal":SpellVfx.Portal(m.position);break;case "lightning":var bolt=new GameObject("Network lightning").AddComponent<VfxLightning>();bolt.Setup(m.position,m.end);break;case "pop":SpellVfx.BubblePop(m.position,m.value);break;default:if(m.name.StartsWith("audio:"))SpellAudio.Play(m.name.Substring(6),m.position,m.volume);break;}
 

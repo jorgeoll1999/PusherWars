@@ -18,7 +18,7 @@ namespace GuerraDeEmpujes
   public bool CanControl=>!MenuOpen && Phase==ArenaPhase.Fighting && Player && Player.GetComponent<ArenaHealth>().CurrentHealth>0;
   public BattlefieldWorld World{get;private set;}
   public ShrinkingArena Arena{get;private set;}
-  void Start(){Arena=gameObject.AddComponent<ShrinkingArena>();World=gameObject.AddComponent<BattlefieldWorld>();Network=gameObject.AddComponent<OnlineSession>();Network.game=this;if(!GetComponent<MobileLightweight>())gameObject.AddComponent<MobileLightweight>();Screen.sleepTimeout=SleepTimeout.NeverSleep;Hud=gameObject.AddComponent<MobileArenaHud>();Hud.game=this;OpenShop();if(useFrontEnd){FrontEnd=gameObject.AddComponent<MobileFrontEnd>();FrontEnd.game=this;}}
+  void Start(){progress=new HeroProgression();Arena=gameObject.AddComponent<ShrinkingArena>();World=gameObject.AddComponent<BattlefieldWorld>();Network=gameObject.AddComponent<OnlineSession>();Network.game=this;if(!GetComponent<MobileLightweight>())gameObject.AddComponent<MobileLightweight>();Screen.sleepTimeout=SleepTimeout.NeverSleep;Hud=gameObject.AddComponent<MobileArenaHud>();Hud.game=this;OpenShop();if(useFrontEnd){FrontEnd=gameObject.AddComponent<MobileFrontEnd>();FrontEnd.game=this;}}
   void ClearFighters(){foreach(var p in Fighters)if(p)Destroy(p);Fighters.Clear();foreach(var shot in FindObjectsByType<SpellProjectile>(FindObjectsSortMode.None))Destroy(shot.gameObject);}
   void Spawn()
   {
@@ -27,7 +27,7 @@ namespace GuerraDeEmpujes
    {
     Vector3 spawn=Arena.SpawnPoint(i);int actor=i;int hero=(Mathf.Clamp(SelectedHero,0,3)+i)%4;var p=Instantiate(heroPrefabs[hero],spawn,Quaternion.LookRotation(-new Vector3(spawn.x,0,spawn.z)));p.name=(i==0?"Tú · ":"")+MobileFrontEnd.HeroNames[hero];Fighters.Add(p);
     var stats=p.GetComponent<HeroBattleStats>();if(!stats)stats=p.AddComponent<HeroBattleStats>();
-    var model=i==0?progress:new HeroProgression();if(i>0){for(int k=0;k<4;k++)model.spells[k]=Mathf.Clamp(1+(Round-1)/2,1,5);model.items[0]=(Round-1)/2;model.items[1]=(Round-1)/3;model.items[2]=(Round-1)/3;}
+    var model=i==0?progress:new HeroProgression();if(i>0){for(int k=0;k<3;k++){int[] pool={1,2,4,5,6,7,8,9,10};model.BuySpell(pool[(i*3+k+Round-1)%pool.Length]);}for(int k=0;k<model.spells.Length;k++)if(model.spells[k]>0)model.spells[k]=Mathf.Clamp(1+(Round-1)/2,1,5);model.items[0]=(Round-1)/2;model.items[1]=(Round-1)/3;model.items[2]=(Round-1)/3;}
     stats.Apply(model);p.GetComponent<ArenaHealth>().invulnerable=true;p.GetComponent<ArenaHealth>().onDeath.AddListener(()=>Eliminated(actor));
     MobileLightweight.Dress(p,i==0);p.AddComponent<MobileHealthBar>().localPlayer=i==0;
     if(i>0){var bot=p.AddComponent<MobileArenaBot>();bot.game=this;bot.enabled=BattleMode!=LocalBattleMode.Training;}

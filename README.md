@@ -1,8 +1,10 @@
 # PusherWars · Guerra de empujes
 
-Prototipo de arena de magos para móvil, desarrollado con Unity **6000.6.7f1** (revisión `b22767f04f04`) y Universal Render Pipeline. Versión del juego: **0.7.2**.
+Prototipo de arena de magos para móvil, desarrollado con Unity **6000.6.7f1** (revisión `b22767f04f04`) y Universal Render Pipeline. Versión del juego: **0.8.4**.
 
-Incluye cuatro magos, fuego, rayo, teleport con intercambio, burbuja, bots, tienda entre rondas, mejoras, controles táctiles editables y salas online de hasta ocho jugadores. El anfitrión simula la partida y el relay distribuye los mensajes.
+Cuatro magos, bots y salas online de hasta ocho jugadores. El anfitrión simula el combate; conviene que todos usen la misma versión.
+
+En el arsenal, el primer toque muestra la ficha y el segundo compra o mejora. Se empieza con Fuego y Campo de fuerza, con tres ranuras libres. Rayo, Teleport, Ariete, Ricochet, Égida, Metralla, Luz curva, Monolito y Búmeran se pueden elegir antes del combate y entre rondas. Los objetos no ocupan ranuras de hechizo: botas, capa, orbe, anillo de regeneración y talismán. Los niveles y el oro duran una partida.
 
 ## Descargar y abrir en la Mac
 

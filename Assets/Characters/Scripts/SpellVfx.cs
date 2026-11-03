@@ -79,6 +79,7 @@ namespace GuerraDeEmpujes
   {
    kind=type;foreach(var r in GetComponentsInChildren<MeshRenderer>())r.enabled=false;
    if(type==SpellKind.Fireball){gameObject.AddComponent<FireballCometVfx>().Initialize();enabled=false;return;}
+   if((int)type>=4){gameObject.AddComponent<ArsenalPowerArt>().Setup(type);enabled=false;return;}
    bool fire=type==SpellKind.Fireball;Color color=fire?SpellVfx.Fire:SpellVfx.Arcane;
    orb=SpellVfx.Sphere("Energy core",transform,Vector3.zero,fire?.33f:.29f,fire?SpellVfx.FireMaterial:SpellVfx.ArcaneMaterial);
    var shell=SpellVfx.Sphere("Turbulent shell",transform,Vector3.zero,fire?.6f:.55f,fire?SpellVfx.FireMaterial:SpellVfx.ArcaneMaterial);shell.transform.localScale=new Vector3(.52f,.52f,.8f);

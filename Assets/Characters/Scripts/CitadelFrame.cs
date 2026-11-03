@@ -22,8 +22,8 @@ namespace GuerraDeEmpujes
  }
  public static class CitadelUi
  {
-  static Sprite[] spells;
-  public static Sprite Spell(int index){if(spells==null){var t=Resources.Load<Texture2D>("Interface/SpellAtlas");spells=new Sprite[4];if(t)for(int i=0;i<4;i++){float w=t.width*.5f,h=t.height*.5f;spells[i]=Sprite.Create(t,new Rect(i%2*w,i<2?h:0,w,h),Vector2.one*.5f,100);}}return spells[Mathf.Clamp(index,0,3)];}
+  static Sprite[] spells;static readonly float[] rows={0,.249f,.478f,.704f,1};
+  public static Sprite Spell(int index){if(spells==null){var t=Resources.Load<Texture2D>("Interface/ArsenalAtlas");spells=new Sprite[16];if(t)for(int i=0;i<16;i++){float w=t.width*.25f,h=t.height*.25f;spells[i]=Sprite.Create(t,new Rect(i%4*w,(1-rows[i/4+1])*t.height,w,(rows[i/4+1]-rows[i/4])*t.height),Vector2.one*.5f,100);}}return spells[Mathf.Clamp(index,0,15)];}
   static Font title;public static Font Title=>title?title:(title=Resources.Load<Font>("Interface/Fonts/Cinzel"));
   public static readonly Color Gold=new Color(.91f,.72f,.40f),Ivory=new Color(.93f,.88f,.77f);
   public static CitadelFrame Frame(RectTransform parent,bool crimson=false){var go=new GameObject("Forged frame",typeof(RectTransform),typeof(CanvasRenderer),typeof(CitadelFrame));var r=go.GetComponent<RectTransform>();r.SetParent(parent,false);r.anchorMin=Vector2.zero;r.anchorMax=Vector2.one;r.offsetMin=r.offsetMax=Vector2.zero;r.SetAsFirstSibling();var f=go.GetComponent<CitadelFrame>();f.crimson=crimson;f.sprite=Resources.Load<Sprite>("Interface/ForgedPanel");f.type=Image.Type.Sliced;f.pixelsPerUnitMultiplier=5;f.raycastTarget=false;return f;}

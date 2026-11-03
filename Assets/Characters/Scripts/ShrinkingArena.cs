@@ -107,6 +107,13 @@ namespace GuerraDeEmpujes
             float dx = WideX * scale - Mathf.Abs(p.x), dz = WideZ * scale - Mathf.Abs(p.z);
             return dx >= margin && dz >= margin && dx + dz >= 2 * scale + margin * 1.4142f;
         }
+        public static bool ReflectEdge(Vector3 at,Vector3 next,float radius,ref Vector3 dir){
+            var net=OnlineSession.Instance;var arena=net&&net.game?net.game.Arena:null;
+            if(!arena||!arena.Inside(at,radius)||arena.Inside(next,radius))return false;
+            var n=Vector3.ProjectOnPlane(next,Vector3.up).normalized;
+            if(arena.Wide)n=Mathf.Abs(next.x)/(WideX*arena.Radius/FullRadius-radius)>Mathf.Abs(next.z)/(WideZ*arena.Radius/FullRadius-radius)?Vector3.right*Mathf.Sign(next.x):Vector3.forward*Mathf.Sign(next.z);
+            dir=Vector3.Reflect(dir,n).normalized;return true;
+        }
         public void SetRadius(float value)
         {
             Radius = Mathf.Clamp(value, 5.6f, FullRadius);

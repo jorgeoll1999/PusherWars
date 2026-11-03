@@ -1,0 +1,446 @@
+[
+  {
+    "clip": "RamCast",
+    "seconds": 0.72,
+    "peak_dbfs": -3.26,
+    "rms_dbfs": -17.08,
+    "layers": [
+      {
+        "source": "Fire_Original.mp3",
+        "region": [
+          0,
+          0.52
+        ],
+        "pitch_rate": 0.82,
+        "offset": 0
+      },
+      {
+        "source": "Teleport_Original.mp3",
+        "region": [
+          0.04,
+          0.32
+        ],
+        "pitch_rate": 0.72,
+        "offset": 0
+      }
+    ]
+  },
+  {
+    "clip": "RamImpact",
+    "seconds": 0.32,
+    "peak_dbfs": -7.09,
+    "rms_dbfs": -17.08,
+    "layers": [
+      {
+        "source": "Bubble_Original.mp3",
+        "region": [
+          0.97,
+          1.21
+        ],
+        "pitch_rate": 0.85,
+        "offset": 0
+      },
+      {
+        "source": "Lightning_Original.mp3",
+        "region": [
+          0,
+          0.12
+        ],
+        "pitch_rate": 0.65,
+        "offset": 0
+      }
+    ]
+  },
+  {
+    "clip": "RicochetCast",
+    "seconds": 0.65,
+    "peak_dbfs": -2.62,
+    "rms_dbfs": -17.37,
+    "layers": [
+      {
+        "source": "Fire_Original.mp3",
+        "region": [
+          0.03,
+          0.48
+        ],
+        "pitch_rate": 1.18,
+        "offset": 0
+      },
+      {
+        "source": "Lightning_Original.mp3",
+        "region": [
+          0.1,
+          0.32
+        ],
+        "pitch_rate": 1.45,
+        "offset": 0
+      }
+    ]
+  },
+  {
+    "clip": "RicochetBounce",
+    "seconds": 0.23,
+    "peak_dbfs": -2.62,
+    "rms_dbfs": -20.16,
+    "layers": [
+      {
+        "source": "Teleport_Original.mp3",
+        "region": [
+          0.16,
+          0.29000000000000004
+        ],
+        "pitch_rate": 1.6,
+        "offset": 0
+      },
+      {
+        "source": "Lightning_Original.mp3",
+        "region": [
+          0.03,
+          0.12
+        ],
+        "pitch_rate": 1.7,
+        "offset": 0
+      }
+    ]
+  },
+  {
+    "clip": "AegisCast",
+    "seconds": 2.12,
+    "peak_dbfs": -2.62,
+    "rms_dbfs": -21.26,
+    "layers": [
+      {
+        "source": "Bubble_Original.mp3",
+        "region": [
+          0,
+          0.88
+        ],
+        "pitch_rate": 0.46,
+        "offset": 0
+      },
+      {
+        "source": "Teleport_Original.mp3",
+        "region": [
+          0.02,
+          0.35000000000000003
+        ],
+        "pitch_rate": 1.35,
+        "offset": 0
+      },
+      {
+        "source": "Teleport_Original.mp3",
+        "region": [
+          0.15,
+          0.37
+        ],
+        "pitch_rate": 1.7,
+        "offset": 0.45
+      },
+      {
+        "source": "Teleport_Original.mp3",
+        "region": [
+          0.15,
+          0.37
+        ],
+        "pitch_rate": 1.7,
+        "offset": 1.15
+      }
+    ]
+  },
+  {
+    "clip": "FragmentCast",
+    "seconds": 0.56,
+    "peak_dbfs": -6.23,
+    "rms_dbfs": -17.08,
+    "layers": [
+      {
+        "source": "Fire_Original.mp3",
+        "region": [
+          0.02,
+          0.37
+        ],
+        "pitch_rate": 1.05,
+        "offset": 0
+      },
+      {
+        "source": "Lightning_Original.mp3",
+        "region": [
+          0.16,
+          0.33999999999999997
+        ],
+        "pitch_rate": 1.6,
+        "offset": 0
+      }
+    ]
+  },
+  {
+    "clip": "FragmentSplit",
+    "seconds": 0.34,
+    "peak_dbfs": -2.62,
+    "rms_dbfs": -18.94,
+    "layers": [
+      {
+        "source": "Lightning_Original.mp3",
+        "region": [
+          0.02,
+          0.1
+        ],
+        "pitch_rate": 1.65,
+        "offset": 0
+      },
+      {
+        "source": "Lightning_Original.mp3",
+        "region": [
+          0.18,
+          0.27
+        ],
+        "pitch_rate": 1.9,
+        "offset": 0.045
+      },
+      {
+        "source": "Teleport_Original.mp3",
+        "region": [
+          0.1,
+          0.2
+        ],
+        "pitch_rate": 1.7,
+        "offset": 0.09
+      }
+    ]
+  },
+  {
+    "clip": "FragmentImpact",
+    "seconds": 0.26,
+    "peak_dbfs": -2.62,
+    "rms_dbfs": -17.56,
+    "layers": [
+      {
+        "source": "Lightning_Original.mp3",
+        "region": [
+          0.05,
+          0.16999999999999998
+        ],
+        "pitch_rate": 1.35,
+        "offset": 0
+      },
+      {
+        "source": "Bubble_Original.mp3",
+        "region": [
+          1,
+          1.12
+        ],
+        "pitch_rate": 1.3,
+        "offset": 0
+      }
+    ]
+  },
+  {
+    "clip": "CurveCast",
+    "seconds": 1.15,
+    "peak_dbfs": -2.62,
+    "rms_dbfs": -24.04,
+    "layers": [
+      {
+        "source": "Teleport_Original.mp3",
+        "region": [
+          0,
+          0.68
+        ],
+        "pitch_rate": 0.95,
+        "offset": 0
+      },
+      {
+        "source": "Fire_Original.mp3",
+        "region": [
+          0.08,
+          0.48000000000000004
+        ],
+        "pitch_rate": 1.05,
+        "offset": 0
+      },
+      {
+        "source": "Teleport_Original.mp3",
+        "region": [
+          0.22,
+          0.33999999999999997
+        ],
+        "pitch_rate": 1.9,
+        "offset": 0.4
+      },
+      {
+        "source": "Teleport_Original.mp3",
+        "region": [
+          0.22,
+          0.33999999999999997
+        ],
+        "pitch_rate": 2,
+        "offset": 0.7
+      }
+    ]
+  },
+  {
+    "clip": "CurveImpact",
+    "seconds": 0.4,
+    "peak_dbfs": -2.62,
+    "rms_dbfs": -19.59,
+    "layers": [
+      {
+        "source": "Bubble_Original.mp3",
+        "region": [
+          1.01,
+          1.19
+        ],
+        "pitch_rate": 1.5,
+        "offset": 0
+      },
+      {
+        "source": "Teleport_Original.mp3",
+        "region": [
+          0.11,
+          0.31
+        ],
+        "pitch_rate": 1.8,
+        "offset": 0
+      }
+    ]
+  },
+  {
+    "clip": "MonolithRise",
+    "seconds": 0.83,
+    "peak_dbfs": -5.21,
+    "rms_dbfs": -17.1,
+    "layers": [
+      {
+        "source": "Bubble_Original.mp3",
+        "region": [
+          0.95,
+          1.5499999999999998
+        ],
+        "pitch_rate": 0.65,
+        "offset": 0
+      },
+      {
+        "source": "Lightning_Original.mp3",
+        "region": [
+          0.05,
+          0.3
+        ],
+        "pitch_rate": 0.5,
+        "offset": 0.05
+      },
+      {
+        "source": "Fire_Original.mp3",
+        "region": [
+          0.1,
+          0.42000000000000004
+        ],
+        "pitch_rate": 0.65,
+        "offset": 0.15
+      }
+    ]
+  },
+  {
+    "clip": "BoomerangCast",
+    "seconds": 0.68,
+    "peak_dbfs": -2.62,
+    "rms_dbfs": -19.43,
+    "layers": [
+      {
+        "source": "Teleport_Original.mp3",
+        "region": [
+          0.03,
+          0.45999999999999996
+        ],
+        "pitch_rate": 0.9,
+        "offset": 0
+      },
+      {
+        "source": "Fire_Original.mp3",
+        "region": [
+          0.1,
+          0.44999999999999996
+        ],
+        "pitch_rate": 1.2,
+        "offset": 0
+      }
+    ]
+  },
+  {
+    "clip": "BoomerangReturn",
+    "seconds": 0.54,
+    "peak_dbfs": -2.62,
+    "rms_dbfs": -18.88,
+    "layers": [
+      {
+        "source": "Teleport_Original.mp3",
+        "region": [
+          0.12,
+          0.52
+        ],
+        "pitch_rate": 1.1,
+        "offset": 0
+      },
+      {
+        "source": "Fire_Original.mp3",
+        "region": [
+          0.12,
+          0.37
+        ],
+        "pitch_rate": 1.15,
+        "offset": 0
+      }
+    ]
+  },
+  {
+    "clip": "BoomerangHit",
+    "seconds": 0.29,
+    "peak_dbfs": -3.02,
+    "rms_dbfs": -17.08,
+    "layers": [
+      {
+        "source": "Bubble_Original.mp3",
+        "region": [
+          1.02,
+          1.17
+        ],
+        "pitch_rate": 1.15,
+        "offset": 0
+      },
+      {
+        "source": "Teleport_Original.mp3",
+        "region": [
+          0.12,
+          0.27
+        ],
+        "pitch_rate": 1.4,
+        "offset": 0
+      }
+    ]
+  },
+  {
+    "clip": "BoomerangCatch",
+    "seconds": 0.32,
+    "peak_dbfs": -2.62,
+    "rms_dbfs": -21.09,
+    "layers": [
+      {
+        "source": "Teleport_Original.mp3",
+        "region": [
+          0.15,
+          0.33999999999999997
+        ],
+        "pitch_rate": 1.8,
+        "offset": 0
+      },
+      {
+        "source": "Bubble_Original.mp3",
+        "region": [
+          0.97,
+          1.07
+        ],
+        "pitch_rate": 1.6,
+        "offset": 0
+      }
+    ]
+  }
+]

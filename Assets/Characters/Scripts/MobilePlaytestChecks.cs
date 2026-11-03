@@ -13,8 +13,8 @@ namespace GuerraDeEmpujes
   IEnumerator Start()
   {
    Application.runInBackground=true;var model=new HeroProgression{gold=10000};
-   for(int i=0;i<4;i++){for(int n=0;n<4;n++)Check(model.BuySpell(i),"Spell "+i+" upgrade "+(n+2));Check(model.spells[i]==5 && !model.BuySpell(i),"Spell level five cap");}
-   for(int i=0;i<3;i++){for(int n=0;n<5;n++)Check(model.BuyItem(i),"Item "+i+" upgrade "+(n+1));Check(model.items[i]==5 && !model.BuyItem(i),"Item level five cap");}
+   for(int i=0;i<4;i++){for(int n=model.spells[i];n<5;n++)Check(model.BuySpell(i),"Spell "+i+" upgrade "+(n+2));Check(model.spells[i]==5 && !model.BuySpell(i),"Spell level five cap");}
+   for(int i=0;i<Arsenal.Items;i++){for(int n=0;n<5;n++)Check(model.BuyItem(i),"Item "+i+" upgrade "+(n+1));Check(model.items[i]==5 && !model.BuyItem(i),"Item level five cap");}
    var poor=new HeroProgression{gold=0};Check(!poor.BuyItem(0) && !poor.BuySpell(0) && poor.gold==0,"Insufficient funds cannot buy or go negative");poor.gold=600;poor.shopOpen=false;Check(!poor.BuyItem(0) && !poor.BuySpell(0) && poor.gold==600,"Purchases blocked outside the shop");
    var game=FindFirstObjectByType<MobileRoundGame>();yield return new WaitForSeconds(.2f);Check(game.Phase==ArenaPhase.Shop && game.Fighters.Count==4,"Initial shop and four fighters");
    Check(game.BuySpell(0) && game.BuyItem(0) && game.BuyItem(1) && game.BuyItem(2) && game.progress.gold==180,"Spell and all three inventory items spend exact gold");

@@ -7,7 +7,7 @@ namespace GuerraDeEmpujes
   public static Material EffectMaterial {get{if(!effectMaterial)effectMaterial=new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));return effectMaterial;}}
   public static void Impact(ArenaHealth target,Vector3 direction,SpellLevel stats,ArenaHealth source=null)
   {
-   if(target.CurrentHealth<=0 || target.invulnerable)return;var shield=target.GetComponent<BubbleShield>();if(shield && shield.Active)return;
+   if(target.CurrentHealth<=0 || target.Protected)return;var shield=target.GetComponent<BubbleShield>();if(shield && shield.Active)return;
    target.TagAttacker(source);var motor=target.GetComponent<ArenaCharacterMotor>();if(motor)motor.ApplyKnockback(direction,stats.knockback);target.TakeDamage(stats.damage,source);
   }
   public static void Beam(Vector3 start,Vector3 end,Color color,float width)
@@ -26,7 +26,7 @@ namespace GuerraDeEmpujes
    if(target && target.CurrentHealth>0)
    {
     var other=target.GetComponent<ArenaCharacterMotor>();var dest=target.transform.position;
-    if(!other || !Clear(dest,caster,target) || !Clear(old,caster,target))return false;
+    if(target.Protected || !other || !Clear(dest,caster,target) || !Clear(old,caster,target))return false;
     motor.Warp(dest);other.Warp(old);SpellAudio.Play("TeleportArrival",dest);SpellVfx.Portal(old);SpellVfx.Portal(dest);return true;
    }
    // If the chosen point is solid, arrive at the closest clear edge.

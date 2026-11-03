@@ -19,7 +19,7 @@ public static class AppleBuild
         UnityEditor.Rendering.CoreBuildData.instance.Dispose();
         PlayerSettings.companyName = "Guerra de empujes";
         PlayerSettings.productName = "Guerra de empujes";
-        PlayerSettings.bundleVersion = "0.7.2";
+        PlayerSettings.bundleVersion = "0.8.4";
         EditorBuildSettings.scenes = new[] { new EditorBuildSettingsScene(Scene, true) };
     }
 
@@ -30,7 +30,7 @@ public static class AppleBuild
         PlayerSettings.SetScriptingBackend(NamedBuildTarget.iOS, ScriptingImplementation.IL2CPP);
         PlayerSettings.iOS.targetOSVersionString = "16.0";
         PlayerSettings.iOS.sdkVersion = iOSSdkVersion.DeviceSDK;
-        PlayerSettings.iOS.buildNumber = "13";
+        PlayerSettings.iOS.buildNumber = "18";
         PlayerSettings.iOS.appleEnableAutomaticSigning = true;
         string team = Environment.GetEnvironmentVariable("GUERRA_APPLE_TEAM_ID");
         if (!string.IsNullOrEmpty(team)) PlayerSettings.iOS.appleDeveloperTeamID = team;

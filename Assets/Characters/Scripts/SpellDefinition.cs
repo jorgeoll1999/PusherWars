@@ -1,7 +1,7 @@
 using UnityEngine;
 namespace GuerraDeEmpujes
 {
-    public enum SpellKind { Fireball, Lightning, TeleportSwap, Bubble }
+    public enum SpellKind { Fireball, Lightning, TeleportSwap, Bubble, Ram, Ricochet, Aegis, Fragment, Curve, Monolith, Boomerang }
     [System.Serializable] public struct SpellLevel
     {
         [Min(0)]public float damage,knockback;
