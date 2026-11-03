@@ -1,0 +1,10 @@
+{
+  "name": "Caldera \u2014 Four Seals",
+  "diameter_m": 24,
+  "spawn_radius_m": 8.15,
+  "center_clear_radius_m": 6.5,
+  "triangles": 10856,
+  "mesh_objects": 457,
+  "materials": 2,
+  "atlas_size": 512
+}

@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ac5e185ed0b4242bd2c4dc96304400, type: 3}
+  m_Name: Fireball
+  m_EditorClassIdentifier: Assembly-CSharp::GuerraDeEmpujes.SpellDefinition
+  displayName: Bola de fuego
+  kind: 0
+  projectilePrefab: {fileID: 7529094306374526398, guid: 9fc3c76580ecd3245b4a389314e76d76, type: 3}
+  levels:
+  - damage: 14
+    knockback: 5
+    cooldown: 2.2
+    speed: 12
+    range: 14
+    upgradeCost: 0
+    radius: 2.5
+    duration: 1.2
+    hitRadius: 0.18
+  - damage: 18
+    knockback: 6
+    cooldown: 1.98
+    speed: 13
+    range: 15
+    upgradeCost: 2
+    radius: 2.7
+    duration: 1.3000001
+    hitRadius: 0.19500001
+  - damage: 22
+    knockback: 7
+    cooldown: 1.76
+    speed: 14
+    range: 16
+    upgradeCost: 3
+    radius: 2.9
+    duration: 1.4000001
+    hitRadius: 0.21000001
+  - damage: 26
+    knockback: 8
+    cooldown: 1.5400001
+    speed: 15
+    range: 17
+    upgradeCost: 4
+    radius: 3.1
+    duration: 1.5
+    hitRadius: 0.22500001
+  - damage: 30
+    knockback: 9
+    cooldown: 1.32
+    speed: 16
+    range: 18
+    upgradeCost: 5
+    radius: 3.3
+    duration: 1.6
+    hitRadius: 0.24000001

@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ac5e185ed0b4242bd2c4dc96304400, type: 3}
+  m_Name: TeleportSwap
+  m_EditorClassIdentifier: Assembly-CSharp::GuerraDeEmpujes.SpellDefinition
+  displayName: Intercambio
+  kind: 2
+  projectilePrefab: {fileID: 5803331046243350556, guid: ccc771ab07d9e154da7a0e8736f2d033, type: 3}
+  levels:
+  - damage: 0
+    knockback: 0
+    cooldown: 8
+    speed: 14
+    range: 9
+    upgradeCost: 0
+    radius: 2.5
+    duration: 1.2
+    hitRadius: 0.18
+  - damage: 0
+    knockback: 0
+    cooldown: 7.2
+    speed: 15
+    range: 10
+    upgradeCost: 2
+    radius: 2.7
+    duration: 1.3000001
+    hitRadius: 0.19500001
+  - damage: 0
+    knockback: 0
+    cooldown: 6.4
+    speed: 16
+    range: 11
+    upgradeCost: 3
+    radius: 2.9
+    duration: 1.4000001
+    hitRadius: 0.21000001
+  - damage: 0
+    knockback: 0
+    cooldown: 5.6
+    speed: 17
+    range: 12
+    upgradeCost: 4
+    radius: 3.1
+    duration: 1.5
+    hitRadius: 0.22500001
+  - damage: 0
+    knockback: 0
+    cooldown: 4.8
+    speed: 18
+    range: 13
+    upgradeCost: 5
+    radius: 3.3
+    duration: 1.6
+    hitRadius: 0.24000001

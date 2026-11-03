@@ -1,0 +1,58 @@
+[
+  {
+    "character": "MagaArcana",
+    "clips": {
+      "Idle": 90,
+      "Run": 24,
+      "Cast01": 30,
+      "Cast02": 30,
+      "Cast03": 30,
+      "Cast04": 30,
+      "Death": 60
+    },
+    "fps": 30,
+    "cast_release_seconds": 0.4
+  },
+  {
+    "character": "MagaFuego",
+    "clips": {
+      "Idle": 90,
+      "Run": 24,
+      "Cast01": 30,
+      "Cast02": 30,
+      "Cast03": 30,
+      "Cast04": 30,
+      "Death": 60
+    },
+    "fps": 30,
+    "cast_release_seconds": 0.4
+  },
+  {
+    "character": "MagoHielo",
+    "clips": {
+      "Idle": 90,
+      "Run": 24,
+      "Cast01": 30,
+      "Cast02": 30,
+      "Cast03": 30,
+      "Cast04": 30,
+      "Death": 60
+    },
+    "fps": 30,
+    "cast_release_seconds": 0.4
+  },
+  {
+    "character": "MagoPlanta",
+    "clips": {
+      "Idle": 90,
+      "Run": 24,
+      "Cast01": 30,
+      "Cast02": 30,
+      "Cast03": 30,
+      "Cast04": 30,
+      "Death": 60
+    },
+    "fps": 30,
+    "cast_release_seconds": 0.4
+  }
+]

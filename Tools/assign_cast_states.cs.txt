@@ -1,0 +1,4 @@
+foreach(var name in new[]{"MagaArcana","MagaFuego","MagoHielo","MagoPlanta"}){
+ var controller=AssetDatabase.LoadAssetAtPath<UnityEditor.Animations.AnimatorController>("Assets/Characters/"+name+"/"+name+".controller");var sm=controller.layers[0].stateMachine;
+ foreach(var pair in new[]{new[]{"CastFireball","castfireball"},new[]{"CastLightning","castRay"},new[]{"CastTeleport","casttp"},new[]{"CastBubble","castShield"}}){var clip=AssetDatabase.LoadAllAssetsAtPath("Assets/Characters/AnimationLibrary/SpellCasts/"+pair[1]+".fbx").OfType<AnimationClip>().First(c=>c.name==pair[1]);var state=sm.states.Select(s=>s.state).FirstOrDefault(s=>s.name==pair[0]);if(!state)state=sm.AddState(pair[0]);state.motion=clip;state.speed=1;state.iKOnFeet=false;EditorUtility.SetDirty(state);}EditorUtility.SetDirty(controller);
+}AssetDatabase.SaveAssets();return "Four spell-specific states assigned to all wizards";

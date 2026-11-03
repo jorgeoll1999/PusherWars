@@ -1,0 +1,30 @@
+[
+  {
+    "character": "MagaArcana",
+    "hand_forearm_vertices_reweighted": 63,
+    "clips": 7,
+    "authored_fps": 30,
+    "method": "two-bone IK baked to quaternion FK; flat planted feet; forearm-aligned wrists"
+  },
+  {
+    "character": "MagaFuego",
+    "hand_forearm_vertices_reweighted": 76,
+    "clips": 7,
+    "authored_fps": 30,
+    "method": "two-bone IK baked to quaternion FK; flat planted feet; forearm-aligned wrists"
+  },
+  {
+    "character": "MagoHielo",
+    "hand_forearm_vertices_reweighted": 86,
+    "clips": 7,
+    "authored_fps": 30,
+    "method": "two-bone IK baked to quaternion FK; flat planted feet; forearm-aligned wrists"
+  },
+  {
+    "character": "MagoPlanta",
+    "hand_forearm_vertices_reweighted": 81,
+    "clips": 7,
+    "authored_fps": 30,
+    "method": "two-bone IK baked to quaternion FK; flat planted feet; forearm-aligned wrists"
+  }
+]

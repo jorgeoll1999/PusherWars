@@ -1,0 +1,7 @@
+PASS 30 FPS target
+PASS LDR, MSAA2, 90 percent 3D resolution
+PASS Four vector skill icons
+PASS Original collision root scale
+PASS Four inexpensive contact shadows
+PASS Bubble mesh creation
+Device FPS requires tablet test; editor performance is not a device measurement.

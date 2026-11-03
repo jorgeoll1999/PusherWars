@@ -1,0 +1,3 @@
+PASS CALIDAD cap, HDR, MSAA and dynamic lights
+PASS LIGERO cap, HDR, MSAA and dynamic lights
+PASS EQUILIBRADO cap, HDR, MSAA and dynamic lights

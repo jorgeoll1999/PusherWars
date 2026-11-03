@@ -1,0 +1,22 @@
+PASS Home pauses the arena and gates gameplay input
+PASS Artwork, sliced frame and title font loaded
+PASS All four real hero portraits and spell illustrations loaded
+PASS Mage selection is connected and saved
+PASS Arsenal purchase button is reachable through decorative frames
+PASS Arsenal button spends real round gold and upgrades spell
+PASS Lobby start enters live combat and restores gameplay
+PASS Duel creates exactly one opponent
+PASS Selected hero is the playable character
+PASS Purchased spell survives roster selection and battle start
+PASS Opening menu freezes timer and physics
+PASS Continue restores the same round
+PASS Training has three passive targets
+PASS Training protects the player's health
+PASS Round 1 reaches combat before damage
+PASS Round 2 reaches combat before damage
+PASS Round 3 reaches combat before damage
+PASS Round 4 reaches combat before damage
+PASS Round 5 reaches combat before damage
+PASS Five round outcomes produce the completed battle screen
+PASS Results report actual eliminations and earned gold
+ALL CHECKS PASSED

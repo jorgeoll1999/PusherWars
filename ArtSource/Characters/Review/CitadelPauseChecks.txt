@@ -1,0 +1,2 @@
+PASS menu pauses and restores audio plus physics
+PASS per-round results include elimination rewards: RONDA 1   ·   VICTORIA   ·   +625 ORO

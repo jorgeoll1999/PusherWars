@@ -1,0 +1,43 @@
+PASS MagaArcana starts Fireball
+PASS MagaFuego starts Fireball
+PASS MagoHielo starts Fireball
+PASS MagoPlanta starts Fireball
+PASS Fireball has no release before the gesture event
+PASS MagaArcana Fireball exactly once; release=0,269s expected=0,267s; pose=True effects/audio=True returns=True
+PASS MagaFuego Fireball exactly once; release=0,269s expected=0,267s; pose=True effects/audio=True returns=True
+PASS MagoHielo Fireball exactly once; release=0,269s expected=0,267s; pose=True effects/audio=True returns=True
+PASS MagoPlanta Fireball exactly once; release=0,269s expected=0,267s; pose=True effects/audio=True returns=True
+PASS MagaArcana starts Lightning
+PASS MagaFuego starts Lightning
+PASS MagoHielo starts Lightning
+PASS MagoPlanta starts Lightning
+PASS Lightning has no release before the gesture event
+PASS MagaArcana Lightning exactly once; release=0,503s expected=0,500s; pose=True effects/audio=True returns=True
+PASS MagaFuego Lightning exactly once; release=0,503s expected=0,500s; pose=True effects/audio=True returns=True
+PASS MagoHielo Lightning exactly once; release=0,503s expected=0,500s; pose=True effects/audio=True returns=True
+PASS MagoPlanta Lightning exactly once; release=0,503s expected=0,500s; pose=True effects/audio=True returns=True
+PASS MagaArcana starts TeleportSwap
+PASS MagaFuego starts TeleportSwap
+PASS MagoHielo starts TeleportSwap
+PASS MagoPlanta starts TeleportSwap
+PASS TeleportSwap has no release before the gesture event
+PASS MagaArcana TeleportSwap exactly once; release=0,502s expected=0,500s; pose=True effects/audio=True returns=True
+PASS MagaArcana hand-origin teleport reaches the selected point
+PASS MagaFuego TeleportSwap exactly once; release=0,502s expected=0,500s; pose=True effects/audio=True returns=True
+PASS MagaFuego hand-origin teleport reaches the selected point
+PASS MagoHielo TeleportSwap exactly once; release=0,502s expected=0,500s; pose=True effects/audio=True returns=True
+PASS MagoHielo hand-origin teleport reaches the selected point
+PASS MagoPlanta TeleportSwap exactly once; release=0,502s expected=0,500s; pose=True effects/audio=True returns=True
+PASS MagoPlanta hand-origin teleport reaches the selected point
+PASS MagaArcana starts Bubble
+PASS MagaFuego starts Bubble
+PASS MagoHielo starts Bubble
+PASS MagoPlanta starts Bubble
+PASS Bubble has no release before the gesture event
+PASS MagaArcana Bubble exactly once; release=1,804s expected=1,800s; pose=True effects/audio=True returns=True
+PASS MagaFuego Bubble exactly once; release=1,804s expected=1,800s; pose=True effects/audio=True returns=True
+PASS MagoHielo Bubble exactly once; release=1,804s expected=1,800s; pose=True effects/audio=True returns=True
+PASS MagoPlanta Bubble exactly once; release=1,804s expected=1,800s; pose=True effects/audio=True returns=True
+PASS Final pending cast starts
+PASS Death cancels the animation event and pending spell
+ALL CHECKS PASSED

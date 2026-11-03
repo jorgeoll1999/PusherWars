@@ -1,0 +1,9 @@
+Active supplied walking: X Bot@Walking (1).fbx, preserved in ArtSource/UserAnimations.
+Unity source: Assets/Characters/AnimationLibrary/UserWalkingV2.fbx, clip UserWalkingV2, cycle 1.4 seconds.
+Applied to all four wizard controllers (Walk and normal locomotion). Calibrated references retained.
+48 samples per avatar: constant thigh/shin lengths; no leg stretching.
+Preview: Previews/User_Walking_V2.gif.
+Audio: complete fire source starts at projectile release and continues independently of projectile collision/destruction. No FireImpact playback.
+Teleport: complete source plays once on successful arrival; launch silent.
+Lightning and bubble WAV hashes unchanged; behavior retained.
+FourSpellsTests.txt: all 27 checks passed, including sound timing and continuation.

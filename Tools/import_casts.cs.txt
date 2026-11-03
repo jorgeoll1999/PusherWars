@@ -1,0 +1,8 @@
+var lines=new System.Collections.Generic.List<string>();
+foreach(var name in new[]{"casttp","castShield","castRay","castfireball"}){
+ string path="Assets/Characters/AnimationLibrary/SpellCasts/"+name+".fbx";AssetDatabase.ImportAsset(path,ImportAssetOptions.ForceSynchronousImport);
+ var i=(ModelImporter)AssetImporter.GetAtPath(path);i.animationType=ModelImporterAnimationType.Human;i.avatarSetup=ModelImporterAvatarSetup.CreateFromThisModel;i.importAnimation=true;i.animationCompression=ModelImporterAnimationCompression.Off;
+ var takes=i.defaultClipAnimations;foreach(var t in takes){t.name=name;t.loopTime=false;t.loopPose=false;t.lockRootPositionXZ=true;t.lockRootRotation=true;t.lockRootHeightY=true;t.keepOriginalPositionY=true;}i.clipAnimations=takes;i.SaveAndReimport();HumanoidLegCalibration.Calibrate(path);
+ var a=AssetDatabase.LoadAllAssetsAtPath(path).OfType<Avatar>().First();var c=AssetDatabase.LoadAllAssetsAtPath(path).OfType<AnimationClip>().First(x=>x.name==name);lines.Add(name+": valid="+a.isValid+" duration="+c.length+" fps="+c.frameRate);
+}
+return string.Join("\n",lines);

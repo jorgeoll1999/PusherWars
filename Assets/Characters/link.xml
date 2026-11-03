@@ -1,0 +1,6 @@
+<linker>
+  <assembly fullname="UnityEngine.PhysicsModule">
+    <!-- CreatePrimitive(Sphere) adds this native component dynamically. -->
+    <type fullname="UnityEngine.SphereCollider" preserve="all" />
+  </assembly>
+</linker>

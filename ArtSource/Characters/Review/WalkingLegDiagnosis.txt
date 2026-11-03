@@ -1,0 +1,4 @@
+MagaArcana: mesh bottom y=-21,14562..0,4698105 max knee bend=59,16582 max knee side angle=179,4796 stance median speed=1,762806
+MagaFuego: mesh bottom y=-19,49769..0,4489777 max knee bend=59,16742 max knee side angle=179,4795 stance median speed=1,764541
+MagoHielo: mesh bottom y=-18,69087..0,8551149 max knee bend=59,16826 max knee side angle=179,4795 stance median speed=1,765426
+MagoPlanta: mesh bottom y=-16,28401..-0,155586 max knee bend=59,16916 max knee side angle=179,4794 stance median speed=1,771039

@@ -1,0 +1,4 @@
+MagaArcana: valid Humanoid; 29 skin bones; 6837 imported vertices; all weights normalized.
+MagaFuego: valid Humanoid; 29 skin bones; 6891 imported vertices; all weights normalized.
+MagoHielo: valid Humanoid; 29 skin bones; 6705 imported vertices; all weights normalized.
+MagoPlanta: valid Humanoid; 29 skin bones; 6451 imported vertices; all weights normalized.

@@ -1,0 +1,134 @@
+[
+  {
+    "clip": "FireCast",
+    "user_source": "Fire_Original.mp3",
+    "source_region_seconds": [
+      0,
+      0.24
+    ],
+    "result_seconds": 0.24,
+    "tempo_preserves_pitch": 1,
+    "trigger": "release at 0.4 s"
+  },
+  {
+    "clip": "FireImpact",
+    "user_source": "Fire_Original.mp3",
+    "source_region_seconds": [
+      0.2,
+      1.333
+    ],
+    "result_seconds": 1.133,
+    "tempo_preserves_pitch": 1,
+    "trigger": "actual collision/arrival/detonation"
+  },
+  {
+    "clip": "LightningCast",
+    "user_source": "Lightning_Original.mp3",
+    "source_region_seconds": [
+      0,
+      1.8
+    ],
+    "result_seconds": 1.8,
+    "tempo_preserves_pitch": 1,
+    "trigger": "release at 0.4 s"
+  },
+  {
+    "clip": "TeleportCast",
+    "user_source": "Teleport_Original.mp3",
+    "source_region_seconds": [
+      0.01,
+      0.23
+    ],
+    "result_seconds": 0.22,
+    "tempo_preserves_pitch": 1,
+    "trigger": "release at 0.4 s"
+  },
+  {
+    "clip": "TeleportArrival",
+    "user_source": "Teleport_Original.mp3",
+    "source_region_seconds": [
+      0.23,
+      1.04
+    ],
+    "result_seconds": 0.81,
+    "tempo_preserves_pitch": 1,
+    "trigger": "actual collision/arrival/detonation"
+  },
+  {
+    "clip": "BubbleCast",
+    "user_source": "Bubble_Original.mp3",
+    "source_region_seconds": [
+      0,
+      0.88
+    ],
+    "result_seconds": 1.2,
+    "tempo_preserves_pitch": 0.7333333333333334,
+    "trigger": "bubble activation"
+  },
+  {
+    "clip": "BubblePop",
+    "user_source": "Bubble_Original.mp3",
+    "source_region_seconds": [
+      0.94,
+      2.25
+    ],
+    "result_seconds": 1.31,
+    "tempo_preserves_pitch": 1,
+    "trigger": "actual collision/arrival/detonation"
+  },
+  {
+    "clip": "BubbleCast12",
+    "user_source": "Bubble_Original.mp3",
+    "source_region_seconds": [
+      0,
+      0.88
+    ],
+    "result_seconds": 1.2,
+    "tempo_preserves_pitch": 0.7333333333333334,
+    "trigger": "actual collision/arrival/detonation"
+  },
+  {
+    "clip": "BubbleCast13",
+    "user_source": "Bubble_Original.mp3",
+    "source_region_seconds": [
+      0,
+      0.88
+    ],
+    "result_seconds": 1.3,
+    "tempo_preserves_pitch": 0.6769230769230768,
+    "trigger": "actual collision/arrival/detonation"
+  },
+  {
+    "clip": "BubbleCast14",
+    "user_source": "Bubble_Original.mp3",
+    "source_region_seconds": [
+      0,
+      0.88
+    ],
+    "result_seconds": 1.4,
+    "tempo_preserves_pitch": 0.6285714285714287,
+    "trigger": "actual collision/arrival/detonation"
+  },
+  {
+    "clip": "BubbleCast15",
+    "user_source": "Bubble_Original.mp3",
+    "source_region_seconds": [
+      0,
+      0.88
+    ],
+    "result_seconds": 1.5,
+    "tempo_preserves_pitch": 0.5866666666666667,
+    "trigger": "actual collision/arrival/detonation"
+  },
+  {
+    "clip": "BubbleCast16",
+    "user_source": "Bubble_Original.mp3",
+    "source_region_seconds": [
+      0,
+      0.88
+    ],
+    "result_seconds": 1.6,
+    "tempo_preserves_pitch": 0.5499999999999999,
+    "trigger": "actual collision/arrival/detonation"
+  }
+]

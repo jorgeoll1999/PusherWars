@@ -1,0 +1,70 @@
+[
+  {
+    "name": "MagaArcana",
+    "before": {
+      "vertices": 3867,
+      "faces": 7845,
+      "boundary_edges": 11
+    },
+    "after": {
+      "vertices": 3860,
+      "faces": 7843,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0
+    },
+    "bones": 29,
+    "unweighted_vertices": 0,
+    "max_influences": 4
+  },
+  {
+    "name": "MagaFuego",
+    "before": {
+      "vertices": 3848,
+      "faces": 7750,
+      "boundary_edges": 8
+    },
+    "after": {
+      "vertices": 3843,
+      "faces": 7746,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0
+    },
+    "bones": 29,
+    "unweighted_vertices": 0,
+    "max_influences": 4
+  },
+  {
+    "name": "MagoHielo",
+    "before": {
+      "vertices": 3801,
+      "faces": 7734,
+      "boundary_edges": 0
+    },
+    "after": {
+      "vertices": 3801,
+      "faces": 7734,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0
+    },
+    "bones": 29,
+    "unweighted_vertices": 0,
+    "max_influences": 4
+  },
+  {
+    "name": "MagoPlanta",
+    "before": {
+      "vertices": 3853,
+      "faces": 7802,
+      "boundary_edges": 0
+    },
+    "after": {
+      "vertices": 3853,
+      "faces": 7802,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0
+    },
+    "bones": 29,
+    "unweighted_vertices": 0,
+    "max_influences": 4
+  }
+]

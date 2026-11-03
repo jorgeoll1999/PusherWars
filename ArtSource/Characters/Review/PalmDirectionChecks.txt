@@ -1,0 +1,4 @@
+PASS MagaArcana actual skinned palm alignment across ray/teleport and eight directions: 0,00 degrees
+PASS MagaFuego actual skinned palm alignment across ray/teleport and eight directions: 0,03 degrees
+PASS MagoHielo actual skinned palm alignment across ray/teleport and eight directions: 0,02 degrees
+PASS MagoPlanta actual skinned palm alignment across ray/teleport and eight directions: 0,00 degrees

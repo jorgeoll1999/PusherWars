@@ -1,0 +1,112 @@
+[
+  {
+    "clip": "FireCast",
+    "user_source": "Fire_Original.mp3",
+    "source_region_seconds": [
+      0,
+      1.3333125
+    ],
+    "result_seconds": 1.3333125,
+    "tempo_preserves_pitch": 1,
+    "trigger": "OnSpellRelease animation event of CastFireball; complete source uninterrupted through impact"
+  },
+  {
+    "clip": "LightningCast",
+    "user_source": "Lightning_Original.mp3",
+    "source_region_seconds": [
+      0,
+      1.8
+    ],
+    "result_seconds": 1.8,
+    "tempo_preserves_pitch": 1,
+    "trigger": "OnSpellRelease animation event of CastLightning; audio and beam together"
+  },
+  {
+    "clip": "TeleportArrival",
+    "user_source": "Teleport_Original.mp3",
+    "source_region_seconds": [
+      0,
+      1.0459791666666667
+    ],
+    "result_seconds": 1.0459791666666667,
+    "tempo_preserves_pitch": 1,
+    "trigger": "successful teleport arrival only; complete source; no launch sound"
+  },
+  {
+    "clip": "BubbleCast",
+    "user_source": "Bubble_Original.mp3",
+    "source_region_seconds": [
+      0,
+      0.88
+    ],
+    "result_seconds": 1.2,
+    "tempo_preserves_pitch": 0.7333333333333334,
+    "trigger": "OnSpellRelease animation event of CastBubble; charge matches level duration"
+  },
+  {
+    "clip": "BubblePop",
+    "user_source": "Bubble_Original.mp3",
+    "source_region_seconds": [
+      0.94,
+      2.25
+    ],
+    "result_seconds": 1.31,
+    "tempo_preserves_pitch": 1,
+    "trigger": "actual collision/arrival/detonation"
+  },
+  {
+    "clip": "BubbleCast12",
+    "user_source": "Bubble_Original.mp3",
+    "source_region_seconds": [
+      0,
+      0.88
+    ],
+    "result_seconds": 1.2,
+    "tempo_preserves_pitch": 0.7333333333333334,
+    "trigger": "OnSpellRelease animation event of CastBubble; charge matches level duration"
+  },
+  {
+    "clip": "BubbleCast13",
+    "user_source": "Bubble_Original.mp3",
+    "source_region_seconds": [
+      0,
+      0.88
+    ],
+    "result_seconds": 1.3,
+    "tempo_preserves_pitch": 0.6769230769230768,
+    "trigger": "OnSpellRelease animation event of CastBubble; charge matches level duration"
+  },
+  {
+    "clip": "BubbleCast14",
+    "user_source": "Bubble_Original.mp3",
+    "source_region_seconds": [
+      0,
+      0.88
+    ],
+    "result_seconds": 1.4,
+    "tempo_preserves_pitch": 0.6285714285714287,
+    "trigger": "OnSpellRelease animation event of CastBubble; charge matches level duration"
+  },
+  {
+    "clip": "BubbleCast15",
+    "user_source": "Bubble_Original.mp3",
+    "source_region_seconds": [
+      0,
+      0.88
+    ],
+    "result_seconds": 1.5,
+    "tempo_preserves_pitch": 0.5866666666666667,
+    "trigger": "OnSpellRelease animation event of CastBubble; charge matches level duration"
+  },
+  {
+    "clip": "BubbleCast16",
+    "user_source": "Bubble_Original.mp3",
+    "source_region_seconds": [
+      0,
+      0.88
+    ],
+    "result_seconds": 1.6,
+    "tempo_preserves_pitch": 0.5499999999999999,
+    "trigger": "OnSpellRelease animation event of CastBubble; charge matches level duration"
+  }
+]

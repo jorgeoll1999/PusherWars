@@ -1,0 +1,11 @@
+MagaArcana: 8 clips sampled x25; wrist step=23,3 degrees; walk ankle y=0,16..0,32
+MagaFuego: 8 clips sampled x25; wrist step=23,3 degrees; walk ankle y=0,16..0,32
+MagoHielo: 8 clips sampled x25; wrist step=23,3 degrees; walk ankle y=0,16..0,32
+MagoPlanta: 8 clips sampled x25; wrist step=23,3 degrees; walk ankle y=0,16..0,32
+FireCast: mono PCM; peak=0,39
+FireImpact: mono PCM; peak=0,39
+LightningCast: mono PCM; peak=0,51
+TeleportCast: mono PCM; peak=0,26
+TeleportArrival: mono PCM; peak=0,73
+BubbleCast: mono PCM; peak=0,44
+BubblePop: mono PCM; peak=0,54

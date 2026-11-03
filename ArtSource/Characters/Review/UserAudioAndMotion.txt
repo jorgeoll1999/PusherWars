@@ -1,0 +1,23 @@
+Actualizacion: audios del usuario, fuego compacto y locomocion
+
+Audios originales conservados en ArtSource/Audio/*_Original.mp3.
+Fire -> bola de fuego: lanzamiento y colision separados.
+Lightning -> rayo: descarga al liberar el hechizo.
+Teleport -> proyectil de teleport: salida y llegada; una llegada por intercambio.
+Bubble -> burbuja: carga adaptada a 1.2/1.3/1.4/1.5/1.6 segundos; explosion al detonar.
+Edicion con atempo para conservar el tono. Sin pitch aleatorio. Importacion mono PCM.
+
+Locomocion: Quaternius Universal Animation Library Standard, CC0.
+https://quaternius.com/packs/universalanimationlibrary.html
+Bake Axis Conversion corregido para la fuente. Idle/Walk/Jog adaptados a los cuatro avatares.
+BlendTree MoveSpeed, aceleracion/frenado y giros progresivos; vuelve a idle contra paredes.
+Se conservan los cuatro casteos y muerte personalizados.
+
+Bola de fuego: cabeza ensanchada, estela de fuego acortada, mayor emision de humo negro.
+
+Verificacion:
+- FourSpellsTests.txt: 26 comprobaciones correctas, incluyendo audio y los 5 niveles de burbuja.
+- Review/MotorMotionChecks.txt: 3 comprobaciones correctas.
+- Review/UnityPolishChecks.txt: 8 estados x25 muestras para cada personaje; audio cargado y sin saturacion.
+- Revisadas capturas de los cuatro personajes caminando y 24 fotogramas distintos de carrera.
+- Previews/Run_Authored.gif y Previews/Fireball_Flight.gif: capturas de Unity.

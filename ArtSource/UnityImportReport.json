@@ -1,0 +1,7 @@
+{
+    "triangles": 10832,
+    "renderers": 9,
+    "spawns": 4,
+    "floorBounds": "Center: (0.00, -0.30, 0.00), Extents: (12.00, 0.30, 12.00)",
+    "scene": "Assets/Arena/Scenes/Caldera_Arena.unity"
+}

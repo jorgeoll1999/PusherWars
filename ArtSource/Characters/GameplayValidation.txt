@@ -1,0 +1,4 @@
+MagaArcana: 7 clips; valid humanoid; character capsule; health/lava; four empty selectable spell slots.
+MagaFuego: 7 clips; valid humanoid; character capsule; health/lava; four empty selectable spell slots.
+MagoHielo: 7 clips; valid humanoid; character capsule; health/lava; four empty selectable spell slots.
+MagoPlanta: 7 clips; valid humanoid; character capsule; health/lava; four empty selectable spell slots.

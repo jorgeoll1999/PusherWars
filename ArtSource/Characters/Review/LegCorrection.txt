@@ -1,0 +1,7 @@
+Leg correction: recalibrated humanoid reference poses for the user walking source and all four target avatars.
+Source reference was asymmetric in legs/feet. Target reference retained outward angled thighs/shins.
+Reference thighs/shins now vertical, ankle-to-forefoot direction symmetric at the neutral foot angle; mesh bind poses, geometry and bone lengths preserved.
+Leg stretching disabled. Original importer metadata backed up in BeforeLegCalibration.
+Calibrated source now transfers the supplied movement with matching knee/foot orientations.
+48 samples per character: constant bone lengths; average ankle separation around 0.24m.
+Updated preview: Previews/User_Walking_Corrected.gif.

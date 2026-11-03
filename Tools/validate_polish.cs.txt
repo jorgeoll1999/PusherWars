@@ -1,0 +1,28 @@
+var report=new System.Collections.Generic.List<string>();
+foreach(var name in new[]{"MagaArcana","MagaFuego","MagoHielo","MagoPlanta"}){
+ var go=UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Characters/"+name+"/"+name+".prefab"));
+ try{
+  go.transform.position=new Vector3(1000,10,0);foreach(var b in go.GetComponents<MonoBehaviour>())b.enabled=false;go.GetComponent<Rigidbody>().isKinematic=true;
+  var animator=go.GetComponent<Animator>();animator.cullingMode=AnimatorCullingMode.AlwaysAnimate;var skin=go.GetComponentInChildren<SkinnedMeshRenderer>();var mesh=new Mesh();float lowest=100,highest=-100;float handStep=0;Quaternion last=Quaternion.identity;bool first=true;
+  foreach(var clip in new[]{"Idle","Walk","Run","CastFireball","CastLightning","CastTeleport","CastBubble","Death"}){
+   first=true;
+   for(int i=0;i<25;i++){
+    animator.Play(clip,0,i/24f*.999f);animator.Update(.00001f);skin.BakeMesh(mesh);
+    foreach(var v in mesh.vertices)if(float.IsNaN(v.x)||float.IsInfinity(v.y))throw new Exception(name+" nonfinite skin");
+    if(mesh.bounds.size.magnitude>4.5f)throw new Exception(name+" exploded deformation: "+clip);
+    if(clip=="Walk"){
+     foreach(var bone in new[]{HumanBodyBones.LeftFoot,HumanBodyBones.RightFoot}){float y=animator.GetBoneTransform(bone).position.y-go.transform.position.y;lowest=Mathf.Min(lowest,y);highest=Mathf.Max(highest,y);}
+     var wrist=animator.GetBoneTransform(HumanBodyBones.RightHand).rotation;if(!first)handStep=Mathf.Max(handStep,Quaternion.Angle(last,wrist));last=wrist;first=false;
+    }
+   }
+  }
+  UnityEngine.Object.DestroyImmediate(mesh);if(handStep>70)throw new Exception(name+" abrupt wrist flip "+handStep);
+  report.Add(name+": 8 clips sampled x25; wrist step="+handStep.ToString("0.0")+" degrees; walk ankle y="+lowest.ToString("0.00")+".."+highest.ToString("0.00"));
+ }finally{UnityEngine.Object.DestroyImmediate(go);}
+}
+foreach(var name in new[]{"FireCast","LightningCast","TeleportArrival","BubbleCast","BubblePop"}){
+ var clip=Resources.Load<AudioClip>("SpellAudio/"+name);if(!clip || clip.samples<100)throw new Exception("Missing sound "+name);var data=new float[clip.samples];if(!clip.GetData(data,0))throw new Exception("Unreadable sound");float peak=0;double energy=0;foreach(var value in data){peak=Mathf.Max(peak,Mathf.Abs(value));energy+=value*value;}if(peak>.99 || energy/data.Length<.0001)throw new Exception("Bad sound levels "+name);report.Add(name+": mono PCM; peak="+peak.ToString("0.00"));
+}
+System.IO.File.WriteAllLines("ArtSource/Characters/Review/UnityPolishChecks.txt",report);
+return string.Join("\n",report);
+

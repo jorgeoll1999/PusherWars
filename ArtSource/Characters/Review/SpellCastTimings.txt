@@ -1,0 +1,4 @@
+Fireball: castfireball; release=0,267s; duration=1,567s; OnSpellRelease event
+Lightning: castRay; release=0,500s; duration=1,467s; OnSpellRelease event
+TeleportSwap: casttp; release=0,500s; duration=1,833s; OnSpellRelease event
+Bubble: castShield; release=0,000s; duration=3,267s; OnSpellRelease event

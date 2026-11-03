@@ -1,0 +1,20 @@
+{
+    admin 127.0.0.1:20197
+    https_port 9443
+    auto_https disable_redirects
+    storage file_system {
+        root C:/Services/GuerraRelay/tls-data
+    }
+    servers {
+        protocols h1 h2
+    }
+}
+https://186.4.147.35.sslip.io:9443 {
+    tls {
+        issuer acme {
+            disable_http_challenge
+            alt_tlsalpn_port 9443
+        }
+    }
+    reverse_proxy 127.0.0.1:9006
+}

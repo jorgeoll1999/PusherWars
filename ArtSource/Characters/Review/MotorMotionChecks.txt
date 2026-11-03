@@ -1,0 +1,3 @@
+PASS actual travel blends into configured locomotion
+PASS wall obstruction blends to idle
+PASS turn is gradual and completes

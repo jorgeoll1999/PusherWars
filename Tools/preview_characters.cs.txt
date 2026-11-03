@@ -1,0 +1,29 @@
+var root = new GameObject("CharacterRigReview_Temporary");
+var cameraObject = new GameObject("CharacterRigReviewCamera_Temporary");
+RenderTexture rt = null;
+var old = RenderTexture.active;
+try {
+    int i=0;
+    foreach(var name in new[]{"MagaArcana","MagaFuego","MagoHielo","MagoPlanta"}) {
+        var prefab=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Characters/"+name+"/"+name+".prefab");
+        var go=(GameObject)PrefabUtility.InstantiatePrefab(prefab);
+        go.transform.SetParent(root.transform);go.transform.position=new Vector3(1000+i*2.3f,0,0);
+        foreach(var t in go.GetComponentsInChildren<Transform>())t.gameObject.layer=31;
+        var skin=go.GetComponentInChildren<SkinnedMeshRenderer>();
+        var testMesh=new Mesh();skin.BakeMesh(testMesh);
+        if(testMesh.vertexCount==0 || testMesh.bounds.size.magnitude>4)throw new Exception(name+" invalid baked mesh");
+        UnityEngine.Object.DestroyImmediate(testMesh);
+        i++;
+    }
+    var cam=cameraObject.AddComponent<Camera>();
+    cam.transform.position=new Vector3(1003.45f,2.2f,12);
+    cam.transform.LookAt(new Vector3(1003.45f,1,0));
+    cam.orthographic=true;cam.orthographicSize=1.65f;cam.aspect=1600f/600f;
+    cam.clearFlags=CameraClearFlags.SolidColor;cam.backgroundColor=new Color(.17f,.2f,.25f);cam.cullingMask=1<<31;
+    var lightObject=new GameObject("PreviewLight");lightObject.transform.SetParent(root.transform);
+    var light=lightObject.AddComponent<Light>();light.type=LightType.Directional;light.intensity=1.8f;light.cullingMask=1<<31;light.transform.rotation=Quaternion.Euler(30,200,0);
+    rt=new RenderTexture(1600,600,24);cam.targetTexture=rt;cam.Render();RenderTexture.active=rt;
+    var tex=new Texture2D(1600,600,TextureFormat.RGB24,false);tex.ReadPixels(new Rect(0,0,1600,600),0,0);tex.Apply();
+    System.IO.File.WriteAllBytes("Previews/Personajes_Unity.png",tex.EncodeToPNG());UnityEngine.Object.DestroyImmediate(tex);
+    return "Four prefab meshes baked successfully; Unity preview saved.";
+} finally { RenderTexture.active=old; UnityEngine.Object.DestroyImmediate(cameraObject);UnityEngine.Object.DestroyImmediate(root);if(rt)UnityEngine.Object.DestroyImmediate(rt); }

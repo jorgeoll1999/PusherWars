@@ -1,0 +1,1 @@
+Universal Animation Library Standard by Quaternius. CC0 1.0. Source: https://quaternius.com/packs/universalanimationlibrary.html ; author upload: https://opengameart.org/content/universal-animation-library . Runtime uses Idle_Loop, Walk_Loop and Jog_Fwd_Loop, retargeted through Unity Humanoid.

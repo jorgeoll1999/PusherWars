@@ -1,0 +1,7 @@
+{
+  "asset": "Assets\\Characters\\Resources\\Battlefield\\LavaBasalt060.png",
+  "source": "OpenAI built-in imagegen",
+  "purpose": "Seamless basalt and molten lava material; user image used as visual guidance, new original texture",
+  "sha256": "8a1d1fd0717c3dcb8e0d1c21529e114238c6c684a2f0513ac71aa545c0e45f47",
+  "runtime": "World-space flowing UV, gentle distortion, molten brightness animation"
+}

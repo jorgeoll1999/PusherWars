@@ -1,0 +1,5 @@
+Application.runInBackground=true;var type=typeof(UnityEditor.Editor).Assembly.GetType("UnityEditor.GameView");EditorWindow.GetWindow(type).Focus();
+new GameObject("Aim and shield actual-frame verification").AddComponent<GuerraDeEmpujes.AimShieldReview>();
+var p=UnityEngine.Object.FindObjectsByType<GuerraDeEmpujes.SpellLoadout>(FindObjectsSortMode.None).First(l=>l.name.Contains("Arcana") && Mathf.Abs(l.transform.position.x)<20);var input=p.GetComponent<GuerraDeEmpujes.CombatPlayerInput>();if(input)input.controlsEnabled=false;
+var c=Camera.main;var point=c.WorldToScreenPoint(p.transform.position);var ray=c.ScreenPointToRay(point+new Vector3(130,130,0));float distance;new Plane(Vector3.up,p.transform.position).Raycast(ray,out distance);var target=ray.GetPoint(distance);
+p.GetComponent<GuerraDeEmpujes.CharacterAnimationDriver>().SpellReleased+=kind=>{if(kind==GuerraDeEmpujes.SpellKind.Lightning)ScreenCapture.CaptureScreenshot("Previews/RayAim_GameView.png");};p.TryCastAt(1,target);return "Real-frame tests and overhead aiming screenshot started";

@@ -1,0 +1,8 @@
+var root=new GameObject("RunPoseDiagnostic");
+for(int i=0;i<4;i++){
+ var go=UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Characters/MagaFuego/MagaFuego.prefab"));go.transform.SetParent(root.transform);go.transform.position=new Vector3(1000,0,i*2.5f);
+ foreach(var b in go.GetComponents<MonoBehaviour>())b.enabled=false;go.GetComponent<Rigidbody>().isKinematic=true;
+ var animator=go.GetComponent<Animator>();animator.cullingMode=AnimatorCullingMode.AlwaysAnimate;animator.Play("Run",0,.001f+i*.25f);animator.Update(.00001f);animator.speed=0;
+}
+var camera=new GameObject("RunDiagnosticCamera").AddComponent<Camera>();camera.transform.SetParent(root.transform);camera.transform.position=new Vector3(1010,1.6f,3.75f);camera.transform.LookAt(new Vector3(1000,1,3.75f));camera.orthographic=true;camera.orthographicSize=2.1f;camera.aspect=1500f/650f;camera.clearFlags=CameraClearFlags.SolidColor;camera.backgroundColor=new Color(.13f,.15f,.19f);
+return "Four side-view samples ready";

@@ -1,0 +1,14 @@
+Time.timeScale=0;
+foreach(var input in UnityEngine.Object.FindObjectsByType<GuerraDeEmpujes.CombatPlayerInput>(FindObjectsSortMode.None))input.controlsEnabled=false;
+var root=new GameObject("VFX Review");
+var fire=new GameObject("FIREBALL REVIEW");fire.transform.SetParent(root.transform);fire.transform.position=new Vector3(-3,1,-1);fire.AddComponent<GuerraDeEmpujes.ProjectileVfx>().Setup(GuerraDeEmpujes.SpellKind.Fireball);
+var teleport=new GameObject("TELEPORT REVIEW");teleport.transform.SetParent(root.transform);teleport.transform.position=new Vector3(3,1,-1);teleport.AddComponent<GuerraDeEmpujes.ProjectileVfx>().Setup(GuerraDeEmpujes.SpellKind.TeleportSwap);
+foreach(var pair in new[]{fire,teleport}){var trail=pair.GetComponentInChildren<TrailRenderer>();for(int i=0;i<20;i++)trail.AddPosition(pair.transform.position+new Vector3(-1.8f+i*.095f,0,-1.5f+i*.079f));}
+GuerraDeEmpujes.SpellVfx.Lightning(new Vector3(-3,1,3),new Vector3(3,1,3));
+GuerraDeEmpujes.SpellVfx.BubblePop(new Vector3(0,.35f,-4),2.5f);
+GuerraDeEmpujes.SpellVfx.Portal(new Vector3(4,0,-2));
+var bubble=GuerraDeEmpujes.SpellVfx.Sphere("BUBBLE REVIEW",root.transform,new Vector3(0,1,-4),2.1f,GuerraDeEmpujes.SpellVfx.BubbleMaterial);
+foreach(var ps in UnityEngine.Object.FindObjectsByType<ParticleSystem>(FindObjectsSortMode.None))ps.Simulate(.12f,true,true);
+foreach(var ring in UnityEngine.Object.FindObjectsByType<GuerraDeEmpujes.VfxExpansion>(FindObjectsSortMode.None))ring.PreviewAt(.4f);
+var camera=Camera.main;camera.transform.position=new Vector3(0,12,-12);camera.transform.LookAt(Vector3.zero);camera.orthographicSize=7;
+return "VFX review composed; paused for capture";

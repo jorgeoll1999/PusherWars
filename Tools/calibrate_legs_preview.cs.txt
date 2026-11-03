@@ -1,0 +1,12 @@
+var flags=System.Reflection.BindingFlags.Static|System.Reflection.BindingFlags.Public|System.Reflection.BindingFlags.NonPublic;var type=typeof(UnityEditor.Editor).Assembly.GetType("UnityEditor.AvatarSetupTool");
+string path="Assets/Characters/MagaArcana/MagaArcana.fbx";var imp=(ModelImporter)AssetImporter.GetAtPath(path);var desc=imp.humanDescription;var go=UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(path));
+try{
+ var bind=type.GetMethod("SampleBindPose",flags);bind.Invoke(null,new object[]{go});
+ var modelBones=type.GetMethod("GetModelBones",flags).Invoke(null,new object[]{go.transform,false,null});
+ var mapping=desc.human.ToDictionary(h=>h.humanName,h=>h.boneName);
+ var get=type.GetMethods(flags).First(m=>m.Name=="GetHumanBones"&&m.GetParameters()[0].ParameterType==typeof(System.Collections.Generic.Dictionary<string,string>));
+ var bones=get.Invoke(null,new object[]{mapping,modelBones});var err=type.GetMethod("GetPoseError",flags);float before=(float)err.Invoke(null,new[]{bones});type.GetMethod("MakePoseValid",flags).Invoke(null,new[]{bones});float after=(float)err.Invoke(null,new[]{bones});
+ desc.skeleton=(SkeletonBone[])type.GetMethod("GetSkeletonBones",flags).Invoke(null,new object[]{go.transform});
+ System.IO.File.WriteAllText("ArtSource/Characters/Review/AvatarCalibrationPreview.json",JsonUtility.ToJson(desc,true));
+ return "Pose error before="+before+" after="+after+" skeleton="+desc.skeleton.Length;
+}finally{UnityEngine.Object.DestroyImmediate(go);}

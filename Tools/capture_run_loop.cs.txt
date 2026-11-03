@@ -1,0 +1,10 @@
+Time.timeScale=0;
+var root=GameObject.Find("RunPoseDiagnostic");var animator=root.GetComponentInChildren<Animator>();
+var camera=GameObject.Find("RunDiagnosticCamera").GetComponent<Camera>();camera.transform.position=new Vector3(1005,1.45f,0);camera.transform.LookAt(new Vector3(1000,.95f,0));camera.orthographicSize=1.22f;camera.aspect=1;
+System.IO.Directory.CreateDirectory("Previews/RunReviewFrames");var rt=new RenderTexture(560,560,24);camera.targetTexture=rt;var previous=RenderTexture.active;var tex=new Texture2D(560,560,TextureFormat.RGB24,false);
+try{
+ for(int i=0;i<24;i++){
+  animator.Play("Run",0,i/24f);animator.Update(.00001f);camera.Render();RenderTexture.active=rt;tex.ReadPixels(new Rect(0,0,560,560),0,0);tex.Apply();System.IO.File.WriteAllBytes("Previews/RunReviewFrames/"+i.ToString("00")+".png",tex.EncodeToPNG());
+ }
+}finally{camera.targetTexture=null;RenderTexture.active=previous;UnityEngine.Object.DestroyImmediate(tex);UnityEngine.Object.DestroyImmediate(rt);}
+return "24 profile frames captured from Unity animation playback";

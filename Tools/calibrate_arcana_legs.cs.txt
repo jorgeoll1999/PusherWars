@@ -1,0 +1,7 @@
+string path="Assets/Characters/MagaArcana/MagaArcana.fbx";var importer=(ModelImporter)AssetImporter.GetAtPath(path);var desc=importer.humanDescription;var model=AssetDatabase.LoadAssetAtPath<GameObject>(path);var go=UnityEngine.Object.Instantiate(model);go.name=model.name;
+try{
+ var transforms=go.GetComponentsInChildren<Transform>(true);foreach(var s in desc.skeleton){var t=transforms.FirstOrDefault(x=>x.name==s.name);if(t){t.localPosition=s.position;t.localRotation=s.rotation;t.localScale=s.scale;}}
+ foreach(string side in new[]{"Left","Right"}){var u=transforms.First(t=>t.name==side+"UpperLeg");var l=transforms.First(t=>t.name==side+"LowerLeg");var f=transforms.First(t=>t.name==side+"Foot");var orientation=f.rotation;u.rotation=Quaternion.FromToRotation(l.position-u.position,Vector3.down)*u.rotation;l.rotation=Quaternion.FromToRotation(f.position-l.position,Vector3.down)*l.rotation;f.rotation=orientation;}
+ desc.skeleton=transforms.Select(t=>new SkeletonBone{name=t.name,position=t.localPosition,rotation=t.localRotation,scale=t.localScale}).ToArray();desc.legStretch=0;
+}finally{UnityEngine.Object.DestroyImmediate(go);}
+importer.humanDescription=desc;importer.SaveAndReimport();return "Arcana reference pose: vertical legs, original foot orientation, no leg stretch";

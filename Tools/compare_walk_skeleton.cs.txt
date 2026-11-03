@@ -1,0 +1,7 @@
+var rows=new System.Collections.Generic.List<string>();
+foreach(var n in new[]{"UserWalking","MagaArcana"}){
+ var path=n=="UserWalking"?"Assets/Characters/AnimationLibrary/UserWalking.fbx":"Assets/Characters/MagaArcana/MagaArcana.prefab";var go=UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>(path));go.transform.position=new Vector3(1000,0,0);foreach(var b in go.GetComponents<MonoBehaviour>())b.enabled=false;var rb=go.GetComponent<Rigidbody>();if(rb)rb.isKinematic=true;var a=go.GetComponent<Animator>();a.runtimeAnimatorController=AssetDatabase.LoadAssetAtPath<RuntimeAnimatorController>("Assets/Characters/MagaArcana/MagaArcana.controller");a.cullingMode=AnimatorCullingMode.AlwaysAnimate;a.Rebind();
+ foreach(float t in new[]{0f,.25f,.5f,.75f}){a.Play("Walk",0,t);a.Update(.00001f);string s=n+" phase "+t+" scale "+a.humanScale;foreach(var b in new[]{HumanBodyBones.Hips,HumanBodyBones.LeftUpperLeg,HumanBodyBones.LeftLowerLeg,HumanBodyBones.LeftFoot,HumanBodyBones.LeftToes,HumanBodyBones.RightUpperLeg,HumanBodyBones.RightLowerLeg,HumanBodyBones.RightFoot})s+="\n "+b+" "+(a.GetBoneTransform(b).position-go.transform.position).ToString("F3");rows.Add(s);}
+ UnityEngine.Object.DestroyImmediate(go);
+}
+System.IO.File.WriteAllLines("ArtSource/Characters/Review/WalkingSkeletonComparison.txt",rows);return string.Join("\n",rows);

@@ -1,0 +1,12 @@
+Four supplied spell animations applied to MagaArcana, MagaFuego, MagoHielo and MagoPlanta.
+castfireball -> CastFireball, release frame 8 at 30 fps (0.267s).
+castRay -> CastLightning, release frame 15 (0.500s).
+casttp -> CastTeleport, release frame 15 (0.500s).
+castShield -> CastBubble, activation frame 54 (1.800s).
+Clips play at original speed; each returns to accepted walking/idle after recovery.
+Animation events queue the release; LateUpdate dispatches after bone transforms update.
+Fireball uses the midpoint between palms; lightning and teleport use the right palm. Obstructions limit the origin, and teleport range is measured from that origin to preserve the chosen destination.
+Fire audio plays complete at release; teleport sound remains arrival-only; lightning and shield audio timing rules retained.
+Original supplied FBXs preserved in ArtSource/UserAnimations/SpellCasts.
+Verification: 42 synchronized-cast checks across 16 character/spell combinations, 27 combat/audio regression checks, 25 deformation samples for each of 8 states on each character. No console errors after tests.
+Preview: Previews/SpellCast_Synchronized.png.

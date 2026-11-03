@@ -1,0 +1,8 @@
+string path="Assets/Characters/AnimationLibrary/UserWalking.fbx";var importer=(ModelImporter)AssetImporter.GetAtPath(path);var desc=importer.humanDescription;var model=AssetDatabase.LoadAssetAtPath<GameObject>(path);var go=UnityEngine.Object.Instantiate(model);go.name=model.name;
+try{
+ var ts=go.GetComponentsInChildren<Transform>(true);foreach(var s in desc.skeleton){var t=ts.FirstOrDefault(x=>x.name==s.name);if(t){t.localPosition=s.position;t.localRotation=s.rotation;t.localScale=s.scale;}}
+ var map=desc.human.ToDictionary(h=>h.humanName,h=>ts.First(t=>t.name==h.boneName));
+ foreach(string side in new[]{"Left","Right"}){var u=map[side+"UpperLeg"];var l=map[side+"LowerLeg"];var f=map[side+"Foot"];var toe=map[side+"Toes"];u.rotation=Quaternion.FromToRotation(l.position-u.position,Vector3.down)*u.rotation;l.rotation=Quaternion.FromToRotation(f.position-l.position,Vector3.down)*l.rotation;f.rotation=Quaternion.FromToRotation(toe.position-f.position,new Vector3(0,-.5f,.8660254f))*f.rotation;}
+ desc.skeleton=ts.Select(t=>new SkeletonBone{name=t.name,position=t.localPosition,rotation=t.localRotation,scale=t.localScale}).ToArray();desc.legStretch=0;
+}finally{UnityEngine.Object.DestroyImmediate(go);}
+importer.humanDescription=desc;importer.SaveAndReimport();return "User source calibrated with straight legs and symmetric neutral feet";

@@ -1,0 +1,28 @@
+PASS Full fire audio starts at release without pitch shift
+PASS Fireball deals configured damage once
+PASS Fireball pushes
+PASS Fire audio continues through impact without a second sound
+PASS Lightning impacts instantly
+PASS Teleport launch is silent
+PASS Teleport projectile swaps both characters
+PASS Swap does not damage target
+PASS Full teleport audio plays once on arrival
+PASS Empty destination reached at selected point
+PASS Bubble blocks lightning
+PASS Bubble blocks fireball
+PASS Bubble pushes close character outward
+PASS Bubble does not push distant character
+PASS Bubble explosion only pushes
+PASS Unsafe wall destination rejected
+PASS Upgrade changes level and spends points
+PASS Bubble charge audio matches level 1 duration
+PASS Bubble detonation stops charge at level 1
+PASS Bubble charge audio matches level 2 duration
+PASS Bubble detonation stops charge at level 2
+PASS Bubble charge audio matches level 3 duration
+PASS Bubble detonation stops charge at level 3
+PASS Bubble charge audio matches level 4 duration
+PASS Bubble detonation stops charge at level 4
+PASS Bubble charge audio matches level 5 duration
+PASS Bubble detonation stops charge at level 5
+ALL CHECKS PASSED

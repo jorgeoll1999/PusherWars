@@ -1,0 +1,5 @@
+PASS shield level 1 immediate=True explosion frame=55,5 expected=54
+PASS shield level 2 immediate=True explosion frame=55,2 expected=54
+PASS shield level 3 immediate=True explosion frame=55,1 expected=54
+PASS shield level 4 immediate=True explosion frame=55,0 expected=54
+PASS shield level 5 immediate=True explosion frame=55,1 expected=54

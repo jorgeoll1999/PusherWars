@@ -1,0 +1,4 @@
+PASS MagaArcana: new supplied UserWalkingV2 FBX active
+PASS MagaFuego: new supplied UserWalkingV2 FBX active
+PASS MagoHielo: new supplied UserWalkingV2 FBX active
+PASS MagoPlanta: new supplied UserWalkingV2 FBX active

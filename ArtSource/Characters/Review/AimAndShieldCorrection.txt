@@ -1,0 +1,11 @@
+Directional aiming and shield correction
+
+Ray and teleport: arms corrected after animation evaluation; wrist orientation calibrated from the actual mesh's wrist-to-fingertip region, using bind poses. Both hands point at the selected destination. Lightning origin follows the casting hand during its flash.
+
+Shield: activates with animation start. Playback speed follows shield duration at each upgrade level. OnShieldBurst animation event, at source frame 54 (arms opened), triggers the actual detonation and explosion sound. Timer is only a delayed safety fallback for an interrupted/missing animation event.
+
+Verification:
+PalmDirectionChecks.txt: actual posed hand geometry checked in eight directions for ray and teleport on all four wizards.
+AimShieldChecks.txt: shield activation and opening-frame explosion checked for all five levels.
+FourSpellsTests.txt: combat/audio regression.
+RayAim_GameView.png: enlarged actual Game View capture.

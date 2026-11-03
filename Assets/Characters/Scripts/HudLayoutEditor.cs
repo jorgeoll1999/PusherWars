@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+namespace GuerraDeEmpujes
+{
+ [Serializable] public class HudPosition {public string id;public Vector2 center;}
+ [Serializable] public class HudPositions {public HudPosition[] controls;}
+ public sealed class HudLayoutEditor:MonoBehaviour
+ {
+  const string Key="guerra.hud.positions.v1";
+  public MobileArenaHud hud;RectTransform overlay;float previousTime;bool previousMenu;
+  readonly List<RectTransform> controls=new List<RectTransform>();readonly List<DefaultRect> defaults=new List<DefaultRect>();HudPositions before;
+  struct DefaultRect{public Vector2 min,max,pivot,size,position;public DefaultRect(RectTransform r){min=r.anchorMin;max=r.anchorMax;pivot=r.pivot;size=r.sizeDelta;position=r.anchoredPosition;}public void Apply(RectTransform r){r.anchorMin=min;r.anchorMax=max;r.pivot=pivot;r.sizeDelta=size;r.anchoredPosition=position;}}
+  public void Setup(MobileArenaHud owner){hud=owner;Canvas.ForceUpdateCanvases();foreach(Transform t in hud.SafeRoot){var r=t as RectTransform;if(r&&(r.name.StartsWith("Skill ")||r.name=="Life panel"||r.name=="Round clock"||r.name=="Gold"||r.name=="Menu"||r.name=="Inventory"||r.name=="Performance"||r.name=="Floating joystick touch zone"||r.name=="Cancel cast")){controls.Add(r);defaults.Add(new DefaultRect(r));}}if(PlayerPrefs.HasKey(Key)){try{Apply(JsonUtility.FromJson<HudPositions>(PlayerPrefs.GetString(Key)));}catch{PlayerPrefs.DeleteKey(Key);}}}
+  Vector2 Center(RectTransform r){var corners=new Vector3[4];r.GetWorldCorners(corners);var center=hud.SafeRoot.InverseTransformPoint((corners[0]+corners[2])*.5f);var bounds=hud.SafeRoot.rect;return new Vector2((center.x-bounds.xMin)/bounds.width,(center.y-bounds.yMin)/bounds.height);}
+  HudPositions Capture(){var result=new List<HudPosition>();foreach(var r in controls)result.Add(new HudPosition{id=r.name,center=Center(r)});return new HudPositions{controls=result.ToArray()};}
+  void Apply(HudPositions layout){if(layout==null||layout.controls==null)return;Canvas.ForceUpdateCanvases();foreach(var p in layout.controls){if(!float.IsFinite(p.center.x)||!float.IsFinite(p.center.y))continue;var r=controls.Find(t=>t.name==p.id);if(r)Move(r,p.center);}}
+  public void Move(RectTransform r,Vector2 center){var size=r.rect.size;var bounds=hud.SafeRoot.rect;float halfX=Mathf.Min(.49f,size.x/bounds.width*.5f),halfY=Mathf.Min(.49f,size.y/bounds.height*.5f);center=new Vector2(Mathf.Clamp(center.x,halfX,1-halfX),Mathf.Clamp(center.y,halfY,1-halfY));r.anchorMin=r.anchorMax=center;r.pivot=Vector2.one*.5f;r.sizeDelta=size;r.anchoredPosition=Vector2.zero;}
+  public void Begin(){if(hud.Editing)return;Canvas.ForceUpdateCanvases();before=Capture();previousTime=Time.timeScale;previousMenu=hud.game.MenuOpen;hud.game.MenuOpen=true;if(!hud.game.Online)Time.timeScale=0;hud.SetEditing(true);Rebuild();}
+  void Rebuild(){if(overlay)Destroy(overlay.gameObject);overlay=new GameObject("HUD layout editor",typeof(RectTransform),typeof(Image)).GetComponent<RectTransform>();overlay.SetParent(hud.SafeRoot,false);overlay.anchorMin=Vector2.zero;overlay.anchorMax=Vector2.one;overlay.offsetMin=overlay.offsetMax=Vector2.zero;overlay.GetComponent<Image>().color=new Color(0,0,0,.28f);
+   foreach(var target in controls){var rect=new GameObject("Move "+target.name,typeof(RectTransform),typeof(Image),typeof(HudLayoutDrag)).GetComponent<RectTransform>();rect.SetParent(overlay,false);rect.anchorMin=rect.anchorMax=Center(target);rect.pivot=Vector2.one*.5f;rect.sizeDelta=target.rect.size;rect.GetComponent<Image>().color=new Color(.85f,.62f,.20f,.24f);var drag=rect.GetComponent<HudLayoutDrag>();drag.editor=this;drag.target=target;var text=new GameObject("Label",typeof(RectTransform),typeof(Text)).GetComponent<Text>();text.transform.SetParent(rect,false);var tr=(RectTransform)text.transform;tr.anchorMin=Vector2.zero;tr.anchorMax=Vector2.one;tr.offsetMin=tr.offsetMax=Vector2.zero;text.font=Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");text.fontSize=22;text.alignment=TextAnchor.MiddleCenter;text.color=Color.white;text.raycastTarget=false;text.text=target.name=="Floating joystick touch zone"?"ZONA DEL JOYSTICK\nArrastra para mover":target.name=="Cancel cast"?"CANCELAR":DisplayName(target.name);}
+   var bar=new GameObject("Layout toolbar",typeof(RectTransform),typeof(Image)).GetComponent<RectTransform>();bar.SetParent(overlay,false);bar.anchorMin=new Vector2(.25f,.02f);bar.anchorMax=new Vector2(.75f,.17f);bar.offsetMin=bar.offsetMax=Vector2.zero;bar.GetComponent<Image>().color=new Color(.02f,.03f,.05f,.96f);
+   var barDrag=bar.gameObject.AddComponent<HudLayoutDrag>();barDrag.editor=this;barDrag.target=bar;
+   MakeText(bar,"Arrastra controles y barra. Online, la partida sigue.",new Vector2(.01f,.58f),new Vector2(.99f,.98f));MakeButton(bar,"GUARDAR",.02f,()=>End(true));MakeButton(bar,"CANCELAR",.35f,()=>End(false));MakeButton(bar,"RESTABLECER",.68f,ResetDefaults);
+  }
+  static string DisplayName(string name){switch(name){case "Life panel":return "VIDA";case "Round clock":return "RONDA";case "Gold":return "ORO";case "Menu":return "MENÚ";case "Inventory":return "INVENTARIO";case "Performance":return "GRÁFICOS";default:return name.Replace("Skill ","");}}
+  void MakeText(Transform parent,string value,Vector2 min,Vector2 max){var t=new GameObject(value,typeof(RectTransform),typeof(Text)).GetComponent<Text>();t.transform.SetParent(parent,false);var r=(RectTransform)t.transform;r.anchorMin=min;r.anchorMax=max;r.offsetMin=r.offsetMax=Vector2.zero;t.font=Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");t.fontSize=22;t.alignment=TextAnchor.MiddleCenter;t.color=Color.white;t.text=value;t.raycastTarget=false;}
+  void MakeButton(Transform parent,string value,float x,UnityEngine.Events.UnityAction callback){var r=new GameObject(value,typeof(RectTransform),typeof(Image),typeof(Button)).GetComponent<RectTransform>();r.SetParent(parent,false);r.anchorMin=new Vector2(x,.06f);r.anchorMax=new Vector2(x+.30f,.55f);r.offsetMin=r.offsetMax=Vector2.zero;r.GetComponent<Image>().color=new Color(.36f,.18f,.05f,1);r.GetComponent<Button>().onClick.AddListener(callback);MakeText(r,value,Vector2.zero,Vector2.one);}
+  public void ResetDefaults(){for(int i=0;i<controls.Count;i++)defaults[i].Apply(controls[i]);Canvas.ForceUpdateCanvases();Rebuild();}
+  public void End(bool save){if(!hud.Editing)return;if(save){PlayerPrefs.SetString(Key,JsonUtility.ToJson(Capture()));PlayerPrefs.Save();}else Apply(before);if(overlay)Destroy(overlay.gameObject);hud.SetEditing(false);Time.timeScale=previousTime;hud.game.MenuOpen=previousMenu;if(hud.game.FrontEnd)hud.game.FrontEnd.ShowSettings();}
+  public void Drag(RectTransform target,RectTransform handle,Vector2 screenDelta){Vector2 delta=screenDelta/hud.UiScale;var b=hud.SafeRoot.rect;Move(target,Center(target)+new Vector2(delta.x/b.width,delta.y/b.height));handle.anchorMin=handle.anchorMax=Center(target);handle.anchoredPosition=Vector2.zero;}
+ }
+ public sealed class HudLayoutDrag:MonoBehaviour,IDragHandler{public HudLayoutEditor editor;public RectTransform target;public void OnDrag(PointerEventData e){editor.Drag(target,(RectTransform)transform,e.delta);}}
+}

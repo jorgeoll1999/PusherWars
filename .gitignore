@@ -1,0 +1,67 @@
+# Unity-generated data and local settings
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/MemoryCaptures/
+/Recordings/
+/.utmp/
+/Previews/
+.vs/
+.idea/
+.vscode/
+*.csproj
+*.sln
+*.slnx
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.opendb
+*.VC.db
+sysinfo.txt
+crashlytics-build.properties
+
+# Downloaded tools, dependencies and reference research
+/Tools/Runtime/
+/Tools/AudioDeps/
+/Tools/Research/
+/Tools/AndroidToolPathsBefore.txt
+node_modules/
+__pycache__/
+*.pyc
+/*.zip
+/ArtSource/AnimationLibrary/*.zip
+/ArtSource/Characters/BeforeLegCalibration/
+
+# Blender automatic backups
+*.blend[0-9]
+*.blend[0-9][0-9]
+
+# Generated multiplayer sessions and private server state
+/Tools/Multiplayer/*-room.json
+tls-data/
+tls-config/
+logs/
+.env
+.env.*
+!.env.example
+*.keystore
+*.jks
+*.p12
+*.pfx
+*.pem
+*.key
+*.mobileprovision
+*.provisionprofile
+*.cer
+*.p8
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini

@@ -1,0 +1,4 @@
+MagaArcana: PASS; average ankle separation=0,180 m; maximum bone-length variation=0,000010 m; leg stretching disabled
+MagaFuego: PASS; average ankle separation=0,180 m; maximum bone-length variation=0,000011 m; leg stretching disabled
+MagoHielo: PASS; average ankle separation=0,180 m; maximum bone-length variation=0,000010 m; leg stretching disabled
+MagoPlanta: PASS; average ankle separation=0,180 m; maximum bone-length variation=0,000013 m; leg stretching disabled

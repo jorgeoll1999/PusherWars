@@ -1,0 +1,52 @@
+PASS Spell 0 upgrade 2
+PASS Spell 0 upgrade 3
+PASS Spell 0 upgrade 4
+PASS Spell 0 upgrade 5
+PASS Spell level five cap
+PASS Spell 1 upgrade 2
+PASS Spell 1 upgrade 3
+PASS Spell 1 upgrade 4
+PASS Spell 1 upgrade 5
+PASS Spell level five cap
+PASS Spell 2 upgrade 2
+PASS Spell 2 upgrade 3
+PASS Spell 2 upgrade 4
+PASS Spell 2 upgrade 5
+PASS Spell level five cap
+PASS Spell 3 upgrade 2
+PASS Spell 3 upgrade 3
+PASS Spell 3 upgrade 4
+PASS Spell 3 upgrade 5
+PASS Spell level five cap
+PASS Item 0 upgrade 1
+PASS Item 0 upgrade 2
+PASS Item 0 upgrade 3
+PASS Item 0 upgrade 4
+PASS Item 0 upgrade 5
+PASS Item level five cap
+PASS Item 1 upgrade 1
+PASS Item 1 upgrade 2
+PASS Item 1 upgrade 3
+PASS Item 1 upgrade 4
+PASS Item 1 upgrade 5
+PASS Item level five cap
+PASS Item 2 upgrade 1
+PASS Item 2 upgrade 2
+PASS Item 2 upgrade 3
+PASS Item 2 upgrade 4
+PASS Item 2 upgrade 5
+PASS Item level five cap
+PASS Insufficient funds cannot buy or go negative
+PASS Purchases blocked outside the shop
+PASS Initial shop and four fighters
+PASS Spell and all three inventory items spend exact gold
+PASS Boots, hood and area bonuses applied without character equipment meshes
+PASS Countdown starts combat and locks shop
+PASS Floating joystick moves the character
+PASS Independent second finger aims and casts while joystick remains held
+PASS Joystick release does not stick
+PASS Health decreases and red bar has live health source
+PASS Eliminations and round victory grant exact gold
+PASS Next-round shop preserves gold, items and spell levels
+PASS New round restores the living character and health
+ALL CHECKS PASSED

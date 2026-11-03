@@ -1,0 +1,20 @@
+Application.runInBackground=true;
+var report=new System.Collections.Generic.List<string>();
+foreach(var name in new[]{"MagaArcana","MagaFuego","MagoHielo","MagoPlanta"}){
+ var go=UnityEngine.Object.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Characters/"+name+"/"+name+".prefab"));go.transform.position=new Vector3(1000,0,0);foreach(var b in go.GetComponents<MonoBehaviour>())b.enabled=false;go.GetComponent<Rigidbody>().isKinematic=true;
+ var a=go.GetComponent<Animator>();a.cullingMode=AnimatorCullingMode.AlwaysAnimate;var skin=go.GetComponentInChildren<SkinnedMeshRenderer>();var mesh=new Mesh();var speeds=new System.Collections.Generic.List<float>();Vector3[] last=new Vector3[2];float min=100,max=-100;float maxKnee=0,maxTwist=0;
+ for(int j=0;j<=60;j++){
+  a.Play("Walk",0,j/60f*.999f);a.Update(.00001f);
+  for(int k=0;k<2;k++){
+   var h=a.GetBoneTransform(k==0?HumanBodyBones.LeftUpperLeg:HumanBodyBones.RightUpperLeg).position;
+   var n=a.GetBoneTransform(k==0?HumanBodyBones.LeftLowerLeg:HumanBodyBones.RightLowerLeg).position;
+   var f=a.GetBoneTransform(k==0?HumanBodyBones.LeftFoot:HumanBodyBones.RightFoot).position;
+   maxKnee=Mathf.Max(maxKnee,180-Vector3.Angle(h-n,f-n));
+   var pole=n-Vector3.Lerp(h,f,(h-n).magnitude/((h-n).magnitude+(n-f).magnitude));pole.y=0;if(pole.magnitude>.03f)maxTwist=Mathf.Max(maxTwist,Mathf.Abs(Mathf.Atan2(pole.x,pole.z)*Mathf.Rad2Deg));
+   if(j>0 && f.y<.16f && last[k].y<.16f){float v=(last[k].z-f.z)/(1.533333f/60);if(v>.2f)speeds.Add(v);}last[k]=f;
+  }
+  skin.BakeMesh(mesh);float low=mesh.vertices.Min(v=>skin.transform.TransformPoint(v).y);min=Mathf.Min(min,low);max=Mathf.Max(max,low);
+ }
+ speeds.Sort();report.Add(name+": mesh bottom y="+min+".."+max+" max knee bend="+maxKnee+" max knee side angle="+maxTwist+" stance median speed="+(speeds.Count>0?speeds[speeds.Count/2]:0));UnityEngine.Object.DestroyImmediate(mesh);UnityEngine.Object.DestroyImmediate(go);
+}
+System.IO.File.WriteAllLines("ArtSource/Characters/Review/WalkingLegDiagnosis.txt",report);return string.Join("\n",report);

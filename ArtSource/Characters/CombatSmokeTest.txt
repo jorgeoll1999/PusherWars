@@ -1,0 +1,22 @@
+PASS Insufficient upgrade points rejected
+PASS Upgrade applies level and cost
+PASS Maximum level enforced
+PASS Casting starts
+PASS Casting/cooldown rejects repeat
+PASS No damage before release frame
+PASS Capsule projectile applies damage once
+PASS Projectile pushes target
+PASS Caster immune to own projectile
+PASS Variant cast starts
+PASS Consecutive cast variants differ
+PASS Variant cast starts
+PASS Consecutive cast variants differ
+PASS Variant cast starts
+PASS Consecutive cast variants differ
+PASS Variant cast starts
+PASS Consecutive cast variants differ
+PASS Death cancels pending release and further casting
+PASS Death animation connected
+PASS Lava damages character capsule
+PASS Solid lava supports character
+ALL CHECKS PASSED
